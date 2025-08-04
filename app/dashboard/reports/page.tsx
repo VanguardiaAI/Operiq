@@ -17,18 +17,20 @@ import {
   ChevronRight,
 } from 'lucide-react';
 import {
-  Card,
   LineChart,
+  Line,
   BarChart,
-  DonutChart,
-  Title,
-  Text,
-  Flex,
-  Grid,
-  List,
-  ListItem,
-  Color,
-} from '@tremor/react';
+  Bar,
+  PieChart,
+  Pie,
+  Cell,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from 'recharts';
 
 const performanceData = [
   { month: 'Ene', viajes: 4500, ingresos: 145000, conductores: 45 },
@@ -170,10 +172,10 @@ export default function ReportsPage() {
         {reportTypes.map((report) => {
           const Icon = report.icon;
           return (
-            <Card 
+            <div 
               key={report.id} 
-              className={`bg-zinc-950 border-zinc-800 cursor-pointer transition-all hover:border-zinc-700 p-4 sm:p-6 ${
-                selectedReport === report.id ? 'border-blue-500' : ''
+              className={`bg-zinc-950 border rounded-lg cursor-pointer transition-all hover:border-zinc-700 p-4 sm:p-6 ${
+                selectedReport === report.id ? 'border-blue-500' : 'border-zinc-800'
               }`}
               onClick={() => setSelectedReport(report.id)}
             >
@@ -182,8 +184,8 @@ export default function ReportsPage() {
                   <Icon className={`h-5 w-5 sm:h-6 sm:w-6 ${report.color}`} />
                 </div>
                 <div>
-                  <Title className="text-white text-sm sm:text-base">{report.title}</Title>
-                  <Text className="text-zinc-500 text-xs mt-1 hidden sm:block">{report.description}</Text>
+                  <h4 className="text-white font-medium text-sm sm:text-base">{report.title}</h4>
+                  <p className="text-zinc-500 text-xs mt-1 hidden sm:block">{report.description}</p>
                 </div>
                 <Button 
                   size="sm" 
@@ -194,7 +196,7 @@ export default function ReportsPage() {
                   <ChevronRight className="h-3 w-3 ml-1" />
                 </Button>
               </div>
-            </Card>
+            </div>
           );
         })}
       </div>
@@ -202,89 +204,169 @@ export default function ReportsPage() {
       {/* Charts */}
       <div className="grid gap-4 sm:gap-6 grid-cols-1 lg:grid-cols-2">
         {/* Performance Chart */}
-        <Card className="bg-zinc-950 border-zinc-800 p-4 sm:p-6">
-          <Title className="text-white">Rendimiento General</Title>
-          <Text className="text-zinc-500">Evolución de métricas clave</Text>
-          <LineChart
-            className="mt-4 h-64"
-            data={performanceData}
-            index="month"
-            categories={['viajes', 'conductores']}
-            colors={['blue', 'emerald']}
-            valueFormatter={(value) => value.toLocaleString()}
-            yAxisWidth={48}
-            showAnimation={true}
-            showLegend={true}
-            showGridLines={true}
-            curveType="monotone"
-          />
-        </Card>
+        <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-4 sm:p-6">
+          <h3 className="text-lg font-semibold text-white">Rendimiento General</h3>
+          <p className="text-sm text-zinc-400 mt-1">Evolución de métricas clave</p>
+          <ResponsiveContainer width="100%" height={256} className="mt-4">
+            <LineChart data={performanceData}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#27272a" />
+              <XAxis 
+                dataKey="month" 
+                stroke="#a1a1aa" 
+                tick={{ fill: '#a1a1aa', fontSize: 12 }}
+              />
+              <YAxis 
+                stroke="#a1a1aa" 
+                tick={{ fill: '#a1a1aa', fontSize: 12 }}
+                tickFormatter={(value) => value.toLocaleString()}
+              />
+              <Tooltip 
+                contentStyle={{ 
+                  backgroundColor: '#18181b', 
+                  border: '1px solid #27272a',
+                  borderRadius: '6px'
+                }}
+                labelStyle={{ color: '#a1a1aa' }}
+                itemStyle={{ color: '#fff' }}
+                formatter={(value) => value.toLocaleString()}
+              />
+              <Legend 
+                wrapperStyle={{ color: '#a1a1aa' }}
+                iconType="line"
+              />
+              <Line 
+                type="monotone" 
+                dataKey="viajes" 
+                stroke="#3b82f6" 
+                strokeWidth={2}
+                dot={{ fill: '#3b82f6', r: 4 }}
+                activeDot={{ r: 6 }}
+                name="Viajes"
+              />
+              <Line 
+                type="monotone" 
+                dataKey="conductores" 
+                stroke="#10b981" 
+                strokeWidth={2}
+                dot={{ fill: '#10b981', r: 4 }}
+                activeDot={{ r: 6 }}
+                name="Conductores"
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
 
         {/* Platform Comparison */}
-        <Card className="bg-zinc-950 border-zinc-800 p-4 sm:p-6">
-          <Title className="text-white">Comparativa de Plataformas</Title>
-          <Text className="text-zinc-500">Rendimiento por plataforma</Text>
-          <BarChart
-            className="mt-4 h-64"
-            data={platformComparison}
-            index="platform"
-            categories={['ingresos', 'viajes']}
-            colors={['blue', 'emerald']}
-            valueFormatter={(value) => value.toLocaleString()}
-            yAxisWidth={60}
-            showAnimation={true}
-            showLegend={true}
-            showGridLines={true}
-          />
-        </Card>
+        <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-4 sm:p-6">
+          <h3 className="text-lg font-semibold text-white">Comparativa de Plataformas</h3>
+          <p className="text-sm text-zinc-400 mt-1">Rendimiento por plataforma</p>
+          <ResponsiveContainer width="100%" height={256} className="mt-4">
+            <BarChart data={platformComparison}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#27272a" />
+              <XAxis 
+                dataKey="platform" 
+                stroke="#a1a1aa" 
+                tick={{ fill: '#a1a1aa', fontSize: 12 }}
+              />
+              <YAxis 
+                stroke="#a1a1aa" 
+                tick={{ fill: '#a1a1aa', fontSize: 12 }}
+                tickFormatter={(value) => value.toLocaleString()}
+              />
+              <Tooltip 
+                contentStyle={{ 
+                  backgroundColor: '#18181b', 
+                  border: '1px solid #27272a',
+                  borderRadius: '6px'
+                }}
+                labelStyle={{ color: '#a1a1aa' }}
+                itemStyle={{ color: '#fff' }}
+                formatter={(value) => value.toLocaleString()}
+              />
+              <Legend 
+                wrapperStyle={{ color: '#a1a1aa' }}
+              />
+              <Bar 
+                dataKey="ingresos" 
+                fill="#3b82f6"
+                radius={[4, 4, 0, 0]}
+                name="Ingresos"
+              />
+              <Bar 
+                dataKey="viajes" 
+                fill="#10b981"
+                radius={[4, 4, 0, 0]}
+                name="Viajes"
+              />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
       </div>
 
       {/* Efficiency Distribution */}
-      <Card className="bg-zinc-950 border-zinc-800 p-4 sm:p-6">
-        <Title className="text-white">Distribución de Eficiencia</Title>
-        <Text className="text-zinc-500">Conductores por nivel de rendimiento</Text>
-        <Grid numItemsLg={2} className="gap-4 sm:gap-6 mt-4">
-          <DonutChart
-            className="h-64"
-            data={efficiencyData}
-            category="value"
-            index="name"
-            valueFormatter={(value) => `${value}%`}
-            colors={['emerald', 'blue', 'amber', 'rose']}
-            showAnimation={true}
-            showTooltip={true}
-            variant="donut"
-          />
-          <List className="space-y-3">
+      <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-4 sm:p-6">
+        <h3 className="text-lg font-semibold text-white">Distribución de Eficiencia</h3>
+        <p className="text-sm text-zinc-400 mt-1">Conductores por nivel de rendimiento</p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mt-4">
+          <ResponsiveContainer width="100%" height={256}>
+            <PieChart>
+              <Pie
+                data={efficiencyData}
+                cx="50%"
+                cy="50%"
+                innerRadius={60}
+                outerRadius={100}
+                paddingAngle={2}
+                dataKey="value"
+              >
+                <Cell fill="#10b981" />
+                <Cell fill="#3b82f6" />
+                <Cell fill="#f59e0b" />
+                <Cell fill="#ef4444" />
+              </Pie>
+              <Tooltip 
+                contentStyle={{ 
+                  backgroundColor: '#18181b', 
+                  border: '1px solid #27272a',
+                  borderRadius: '6px'
+                }}
+                labelStyle={{ color: '#a1a1aa' }}
+                itemStyle={{ color: '#fff' }}
+                formatter={(value) => `${value}%`}
+              />
+            </PieChart>
+          </ResponsiveContainer>
+          <div className="space-y-3">
             {efficiencyData.map((item, index) => {
-              const colors: Color[] = ['emerald', 'blue', 'amber', 'rose'];
+              const colors = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444'];
               return (
-                <ListItem key={item.name} className="text-zinc-400">
-                  <Flex justifyContent="between" className="w-full">
-                    <Flex className="items-center gap-2">
-                      <div className={`w-3 h-3 rounded-full bg-${colors[index]}-500`} />
-                      <Text className="text-zinc-400">{item.name}</Text>
-                    </Flex>
-                    <Text className="text-white font-medium">{item.value}%</Text>
-                  </Flex>
-                </ListItem>
+                <div key={item.name} className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <div 
+                      className="w-3 h-3 rounded-full" 
+                      style={{ backgroundColor: colors[index] }}
+                    />
+                    <span className="text-sm text-zinc-400">{item.name}</span>
+                  </div>
+                  <span className="text-sm text-white font-medium">{item.value}%</span>
+                </div>
               );
             })}
-          </List>
-        </Grid>
-      </Card>
+          </div>
+        </div>
+      </div>
 
       {/* Recent Reports */}
-      <Card className="bg-zinc-950 border-zinc-800 p-4 sm:p-6">
-        <Flex className="mb-4" justifyContent="between" alignItems="start">
+      <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-4 sm:p-6">
+        <div className="flex justify-between items-start mb-4">
           <div>
-            <Title className="text-white">Informes Recientes</Title>
-            <Text className="text-zinc-500">Últimos informes generados</Text>
+            <h3 className="text-lg font-semibold text-white">Informes Recientes</h3>
+            <p className="text-sm text-zinc-400 mt-1">Últimos informes generados</p>
           </div>
           <Button variant="outline" size="sm" className="bg-transparent border-zinc-800 text-zinc-400 hover:bg-zinc-900/50 hover:text-white">
             Ver todos
           </Button>
-        </Flex>
+        </div>
         <div className="space-y-3">
           {recentReports.map((report) => (
             <div key={report.id} className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-3 border border-zinc-900/50 rounded gap-3">
@@ -333,7 +415,7 @@ export default function ReportsPage() {
             </div>
           ))}
         </div>
-      </Card>
+      </div>
     </div>
   );
 }

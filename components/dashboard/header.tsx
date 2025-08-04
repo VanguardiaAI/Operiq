@@ -1,6 +1,6 @@
 'use client';
 
-import { } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -9,7 +9,6 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
 
 const pageInfo: { [key: string]: { title: string; subtitle: string } } = {
@@ -48,9 +47,15 @@ const pageInfo: { [key: string]: { title: string; subtitle: string } } = {
 };
 
 export default function Header() {
-  const { data: session } = useSession();
   const pathname = usePathname();
+  const router = useRouter();
   const currentPage = pageInfo[pathname] || pageInfo['/dashboard'];
+
+  const handleLogout = async () => {
+    await fetch('/api/auth/logout', { method: 'POST' });
+    router.push('/login');
+    router.refresh();
+  };
 
   return (
     <header className="flex h-20 items-center justify-between border-b border-zinc-900/50 bg-black px-6">
@@ -76,10 +81,16 @@ export default function Header() {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="bg-gray-900 text-white border-gray-800">
             <DropdownMenuItem className="hover:bg-gray-800">
-              {session?.user?.email || 'admin@operiq.com'}
+              admin@operiq.com
             </DropdownMenuItem>
             <DropdownMenuItem className="hover:bg-gray-800">Perfil</DropdownMenuItem>
             <DropdownMenuItem className="hover:bg-gray-800">Configuración</DropdownMenuItem>
+            <DropdownMenuItem 
+              className="hover:bg-gray-800 text-red-400"
+              onClick={handleLogout}
+            >
+              Cerrar sesión
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

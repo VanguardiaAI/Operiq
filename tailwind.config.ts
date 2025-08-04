@@ -6,7 +6,6 @@ const config: Config = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./node_modules/@tremor/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     container: {
@@ -18,37 +17,6 @@ const config: Config = {
     },
     extend: {
       colors: {
-        // Tremor colors
-        tremor: {
-          brand: {
-            faint: "#0B1929",
-            muted: "#172B4D",
-            subtle: "#1E3A5F",
-            DEFAULT: "#2563EB",
-            emphasis: "#1D4ED8",
-            inverted: "#FFFFFF",
-          },
-          background: {
-            muted: "#09090B",
-            subtle: "#18181B",
-            DEFAULT: "#000000",
-            emphasis: "#27272A",
-          },
-          border: {
-            DEFAULT: "#27272A",
-          },
-          ring: {
-            DEFAULT: "#27272A",
-          },
-          content: {
-            subtle: "#71717A",
-            DEFAULT: "#A1A1AA",
-            emphasis: "#FAFAFA",
-            strong: "#FFFFFF",
-            inverted: "#000000",
-          },
-        },
-        // Existing colors
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

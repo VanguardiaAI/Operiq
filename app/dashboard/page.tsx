@@ -1,6 +1,5 @@
 'use client';
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import StatCard from '@/components/dashboard/stat-card';
 import { DollarSign, Car, Users, AlertCircle } from 'lucide-react';
 import {
@@ -9,13 +8,14 @@ import {
   PieChart,
   Pie,
   Cell,
+  BarChart,
+  Bar,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
+  Legend,
   ResponsiveContainer,
-  BarChart,
-  Bar,
 } from 'recharts';
 
 const financialData = [
@@ -28,9 +28,9 @@ const financialData = [
 ];
 
 const platformData = [
-  { name: 'Uber', value: 65, color: '#3b82f6' },
-  { name: 'Cabify', value: 25, color: '#ec4899' },
-  { name: 'Otros', value: 10, color: '#71717a' },
+  { name: 'Uber', value: 65 },
+  { name: 'Cabify', value: 25 },
+  { name: 'Otros', value: 10 },
 ];
 
 const fleetPerformance = [
@@ -87,148 +87,197 @@ export default function DashboardPage() {
       </div>
 
       <div className="grid gap-4 sm:gap-6 grid-cols-1 lg:grid-cols-2">
-        <Card className="bg-black border border-zinc-900/50">
-          <CardHeader className="p-4 sm:p-6">
-            <CardTitle className="text-white text-base sm:text-lg font-medium">Rendimiento Financiero</CardTitle>
-            <p className="text-xs text-zinc-500">
-              Ingresos vs Gastos en los últimos 6 meses
-            </p>
-          </CardHeader>
-          <CardContent className="p-4 sm:p-6">
-            <ResponsiveContainer width="100%" height={250}>
-              <LineChart data={financialData}>
-                <CartesianGrid strokeDasharray="0" stroke="#27272a" vertical={false} />
-                <XAxis dataKey="month" stroke="#71717a" tick={{ fill: '#71717a', fontSize: 12 }} axisLine={{ stroke: '#27272a' }} />
-                <YAxis stroke="#71717a" tick={{ fill: '#71717a', fontSize: 12 }} axisLine={{ stroke: '#27272a' }} />
-                <Tooltip 
-                  contentStyle={{ backgroundColor: '#18181b', border: '1px solid #27272a', borderRadius: '0px' }}
-                  labelStyle={{ color: '#71717a' }}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="ingresos"
-                  stroke="#3b82f6"
-                  strokeWidth={3}
-                  dot={false}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="gastos"
-                  stroke="#ef4444"
-                  strokeWidth={3}
-                  dot={false}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="beneficio"
-                  stroke="#fbbf24"
-                  strokeWidth={3}
-                  dot={false}
-                />
-              </LineChart>
-            </ResponsiveContainer>
-          </CardContent>
-        </Card>
+        <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-4 sm:p-6">
+          <h3 className="text-lg font-semibold text-white">Rendimiento Financiero</h3>
+          <p className="text-sm text-zinc-400 mt-1">Ingresos vs Gastos en los últimos 6 meses</p>
+          <ResponsiveContainer width="100%" height={288} className="mt-4">
+            <LineChart data={financialData}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#27272a" />
+              <XAxis 
+                dataKey="month" 
+                stroke="#a1a1aa" 
+                tick={{ fill: '#a1a1aa', fontSize: 12 }}
+              />
+              <YAxis 
+                stroke="#a1a1aa" 
+                tick={{ fill: '#a1a1aa', fontSize: 12 }}
+                tickFormatter={(value) => `€${(value/1000).toFixed(0)}k`}
+              />
+              <Tooltip 
+                contentStyle={{ 
+                  backgroundColor: '#18181b', 
+                  border: '1px solid #27272a',
+                  borderRadius: '6px'
+                }}
+                labelStyle={{ color: '#a1a1aa' }}
+                itemStyle={{ color: '#fff' }}
+                formatter={(value) => `€${value.toLocaleString()}`}
+              />
+              <Legend 
+                wrapperStyle={{ color: '#a1a1aa' }}
+                iconType="line"
+              />
+              <Line 
+                type="monotone" 
+                dataKey="ingresos" 
+                stroke="#3b82f6" 
+                strokeWidth={2}
+                dot={{ fill: '#3b82f6', r: 4 }}
+                activeDot={{ r: 6 }}
+                name="Ingresos"
+              />
+              <Line 
+                type="monotone" 
+                dataKey="gastos" 
+                stroke="#ef4444" 
+                strokeWidth={2}
+                dot={{ fill: '#ef4444', r: 4 }}
+                activeDot={{ r: 6 }}
+                name="Gastos"
+              />
+              <Line 
+                type="monotone" 
+                dataKey="beneficio" 
+                stroke="#f59e0b" 
+                strokeWidth={2}
+                dot={{ fill: '#f59e0b', r: 4 }}
+                activeDot={{ r: 6 }}
+                name="Beneficio"
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
 
-        <Card className="bg-black border border-zinc-900/50">
-          <CardHeader className="p-4 sm:p-6">
-            <CardTitle className="text-white text-base sm:text-lg font-medium">Distribución por Plataforma</CardTitle>
-            <p className="text-xs text-zinc-500">
-              Porcentaje de ingresos por plataforma
-            </p>
-          </CardHeader>
-          <CardContent className="flex items-center justify-center p-4 sm:p-6">
-            <ResponsiveContainer width="100%" height={250}>
-              <PieChart>
-                <Pie
-                  data={platformData}
-                  cx="50%"
-                  cy="50%"
-                  labelLine={false}
-                  label={({ name, value }) => `${name}: ${value}%`}
-                  outerRadius={80}
-                  fill="#8884d8"
-                  dataKey="value"
-                >
-                  {platformData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.color} />
-                  ))}
-                </Pie>
-                <Tooltip 
-                  contentStyle={{ backgroundColor: '#18181b', border: '1px solid #27272a', borderRadius: '0px' }}
-                  labelStyle={{ color: '#71717a' }}
-                />
-              </PieChart>
-            </ResponsiveContainer>
-          </CardContent>
-        </Card>
+        <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-4 sm:p-6">
+          <h3 className="text-lg font-semibold text-white">Distribución por Plataforma</h3>
+          <p className="text-sm text-zinc-400 mt-1">Porcentaje de ingresos por plataforma</p>
+          <ResponsiveContainer width="100%" height={288} className="mt-4">
+            <PieChart>
+              <Pie
+                data={platformData}
+                cx="50%"
+                cy="50%"
+                innerRadius={60}
+                outerRadius={100}
+                paddingAngle={2}
+                dataKey="value"
+              >
+                <Cell fill="#3b82f6" />
+                <Cell fill="#8b5cf6" />
+                <Cell fill="#64748b" />
+              </Pie>
+              <Tooltip 
+                contentStyle={{ 
+                  backgroundColor: '#18181b', 
+                  border: '1px solid #27272a',
+                  borderRadius: '6px'
+                }}
+                labelStyle={{ color: '#a1a1aa' }}
+                itemStyle={{ color: '#fff' }}
+                formatter={(value) => `${value}%`}
+              />
+            </PieChart>
+          </ResponsiveContainer>
+          <div className="mt-4 space-y-2">
+            <div className="flex items-center justify-between text-sm">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 bg-blue-500 rounded-full" />
+                <span className="text-zinc-400">Uber</span>
+              </div>
+              <span className="text-white font-medium">65%</span>
+            </div>
+            <div className="flex items-center justify-between text-sm">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 bg-violet-500 rounded-full" />
+                <span className="text-zinc-400">Cabify</span>
+              </div>
+              <span className="text-white font-medium">25%</span>
+            </div>
+            <div className="flex items-center justify-between text-sm">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 bg-slate-500 rounded-full" />
+                <span className="text-zinc-400">Otros</span>
+              </div>
+              <span className="text-white font-medium">10%</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="grid gap-4 sm:gap-6 grid-cols-1 lg:grid-cols-2">
-        <Card className="bg-black border border-zinc-900/50">
-          <CardHeader className="p-4 sm:p-6">
-            <CardTitle className="text-white text-base sm:text-lg font-medium">Rendimiento de la Flota</CardTitle>
-            <p className="text-xs text-zinc-500">
-              Eficiencia de cada vehículo (0-100%)
-            </p>
-          </CardHeader>
-          <CardContent className="p-4 sm:p-6">
-            <ResponsiveContainer width="100%" height={250}>
-              <BarChart data={fleetPerformance}>
-                <CartesianGrid strokeDasharray="0" stroke="#27272a" vertical={false} />
-                <XAxis dataKey="vehicle" stroke="#71717a" tick={{ fill: '#71717a', fontSize: 12 }} axisLine={{ stroke: '#27272a' }} />
-                <YAxis stroke="#71717a" tick={{ fill: '#71717a', fontSize: 12 }} axisLine={{ stroke: '#27272a' }} />
-                <Tooltip 
-                  contentStyle={{ backgroundColor: '#18181b', border: '1px solid #27272a', borderRadius: '0px' }}
-                  labelStyle={{ color: '#71717a' }}
-                />
-                <Bar dataKey="efficiency" fill="#10b981" radius={[2, 2, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
-          </CardContent>
-        </Card>
+        <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-4 sm:p-6">
+          <h3 className="text-lg font-semibold text-white">Rendimiento de la Flota</h3>
+          <p className="text-sm text-zinc-400 mt-1">Eficiencia de cada vehículo (0-100%)</p>
+          <ResponsiveContainer width="100%" height={288} className="mt-4">
+            <BarChart data={fleetPerformance}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#27272a" />
+              <XAxis 
+                dataKey="vehicle" 
+                stroke="#a1a1aa" 
+                tick={{ fill: '#a1a1aa', fontSize: 12 }}
+              />
+              <YAxis 
+                stroke="#a1a1aa" 
+                tick={{ fill: '#a1a1aa', fontSize: 12 }}
+                domain={[0, 100]}
+                tickFormatter={(value) => `${value}%`}
+              />
+              <Tooltip 
+                contentStyle={{ 
+                  backgroundColor: '#18181b', 
+                  border: '1px solid #27272a',
+                  borderRadius: '6px'
+                }}
+                labelStyle={{ color: '#a1a1aa' }}
+                itemStyle={{ color: '#fff' }}
+                formatter={(value) => `${value}%`}
+              />
+              <Bar 
+                dataKey="efficiency" 
+                fill="#10b981"
+                radius={[4, 4, 0, 0]}
+              />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
 
-        <Card className="bg-black border border-zinc-900/50">
-          <CardHeader className="flex flex-row items-center justify-between p-4 sm:p-6">
+        <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-4 sm:p-6">
+          <div className="flex items-start justify-between mb-4">
             <div>
-              <CardTitle className="text-white text-base sm:text-lg font-medium">Alertas de Fraude</CardTitle>
-              <p className="text-xs text-zinc-500">
-                Últimas alertas detectadas por IA
-              </p>
+              <h3 className="text-lg font-semibold text-white">Alertas de Fraude</h3>
+              <p className="text-sm text-zinc-400 mt-1">Últimas alertas detectadas por IA</p>
             </div>
-            <div className="bg-yellow-500/10 p-1.5 sm:p-2">
+            <div className="bg-yellow-500/10 p-1.5 sm:p-2 rounded">
               <AlertCircle className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-500" />
             </div>
-          </CardHeader>
-          <CardContent className="p-4 sm:p-6">
-            <div className="space-y-3 sm:space-y-4">
-              {fraudAlerts.map((alert) => (
-                <div
-                  key={alert.id}
-                  className="border border-zinc-900/50 bg-zinc-900/20 p-3 sm:p-4"
-                >
-                  <div className="flex items-start justify-between">
-                    <div className="space-y-1">
+          </div>
+          <div className="space-y-3 sm:space-y-4">
+            {fraudAlerts.map((alert) => (
+              <div
+                key={alert.id}
+                className="border border-zinc-900/50 bg-zinc-900/20 p-3 sm:p-4 rounded"
+              >
+                <div className="flex items-start justify-between">
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2">
                       <div className="flex items-center gap-2">
-                        <div className="flex items-center gap-2">
-                          <span className="h-2 w-2 bg-red-500" />
-                          <span className="text-xs text-red-500">{alert.type}</span>
-                        </div>
+                        <span className="h-2 w-2 bg-red-500 rounded-full" />
+                        <span className="text-xs text-red-500">{alert.type}</span>
                       </div>
-                      <p className="text-sm font-medium text-white">{alert.vehicle}</p>
-                      <p className="text-xs text-gray-400">
-                        {alert.description}
-                      </p>
                     </div>
-                    <span className="text-xs text-gray-400">
-                      {alert.timestamp}
-                    </span>
+                    <p className="text-sm font-medium text-white">{alert.vehicle}</p>
+                    <p className="text-xs text-gray-400">
+                      {alert.description}
+                    </p>
                   </div>
+                  <span className="text-xs text-gray-400">
+                    {alert.timestamp}
+                  </span>
                 </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

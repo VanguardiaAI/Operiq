@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { 
   TrendingUp, 
@@ -13,17 +12,17 @@ import {
   Percent
 } from 'lucide-react';
 import {
+  Card,
   AreaChart,
-  Area,
-  PieChart,
-  Pie,
-  Cell,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-} from 'recharts';
+  DonutChart,
+  Title,
+  Text,
+  Flex,
+  Metric,
+  BadgeDelta,
+  List,
+  ListItem,
+} from '@tremor/react';
 
 const evolutionData = [
   { month: 'Enero', ingresos: 28000, gastos: 18000, balance: 10000 },
@@ -35,11 +34,11 @@ const evolutionData = [
 ];
 
 const expenseDistribution = [
-  { name: 'Combustible', value: 38, amount: '8.436,00 €', color: '#3b82f6' },
-  { name: 'Mantenimiento', value: 19, amount: '4.218,00 €', color: '#ec4899' },
-  { name: 'Seguros', value: 17, amount: '3.774,00 €', color: '#f59e0b' },
-  { name: 'Impuestos', value: 10, amount: '2.220,00 €', color: '#10b981' },
-  { name: 'Comisiones', value: 16, amount: '3.552,00 €', color: '#8b5cf6' },
+  { name: 'Combustible', value: 38, amount: '8.436,00 €' },
+  { name: 'Mantenimiento', value: 19, amount: '4.218,00 €' },
+  { name: 'Seguros', value: 17, amount: '3.774,00 €' },
+  { name: 'Impuestos', value: 10, amount: '2.220,00 €' },
+  { name: 'Comisiones', value: 16, amount: '3.552,00 €' },
 ];
 
 export default function FinancePage() {
@@ -96,190 +95,118 @@ export default function FinancePage() {
 
       {/* Stats Cards */}
       <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-        <div className="bg-black border border-zinc-900/50 p-4 sm:p-6">
-          <div className="space-y-3">
-            <p className="text-sm font-normal text-zinc-500">Ingresos Totales</p>
-            <div className="flex items-baseline gap-2">
-              <p className="text-2xl sm:text-3xl font-bold text-white">162.800,00 €</p>
-              <div className="h-8 w-8 flex items-center justify-center">
-                <TrendingUp className="h-6 w-6 text-green-500" />
-              </div>
-            </div>
-            <p className="text-xs flex items-center gap-1 text-green-500">
-              <span className="text-lg">↗</span>
+        <Card className="bg-zinc-950 border-zinc-800 p-4 sm:p-6">
+          <Text className="text-zinc-500">Ingresos Totales</Text>
+          <Flex className="items-baseline gap-2 mt-2">
+            <Metric className="text-white">162.800,00 €</Metric>
+            <TrendingUp className="h-6 w-6 text-green-500" />
+          </Flex>
+          <Flex className="mt-2">
+            <BadgeDelta deltaType="increase" className="text-green-500">
               +12% vs periodo anterior
-            </p>
-          </div>
-        </div>
+            </BadgeDelta>
+          </Flex>
+        </Card>
 
-        <div className="bg-black border border-zinc-900/50 p-4 sm:p-6">
-          <div className="space-y-3">
-            <p className="text-sm font-normal text-zinc-500">Gastos Totales</p>
-            <div className="flex items-baseline gap-2">
-              <p className="text-2xl sm:text-3xl font-bold text-white">121.000,00 €</p>
-              <div className="h-8 w-8 flex items-center justify-center">
-                <TrendingDown className="h-6 w-6 text-red-500" />
-              </div>
-            </div>
-            <p className="text-xs flex items-center gap-1 text-red-500">
-              <span className="text-lg">↗</span>
+        <Card className="bg-zinc-950 border-zinc-800 p-4 sm:p-6">
+          <Text className="text-zinc-500">Gastos Totales</Text>
+          <Flex className="items-baseline gap-2 mt-2">
+            <Metric className="text-white">121.000,00 €</Metric>
+            <TrendingDown className="h-6 w-6 text-red-500" />
+          </Flex>
+          <Flex className="mt-2">
+            <BadgeDelta deltaType="increase" className="text-red-500">
               +8% vs periodo anterior
-            </p>
-          </div>
-        </div>
+            </BadgeDelta>
+          </Flex>
+        </Card>
 
-        <div className="bg-black border border-zinc-900/50 p-4 sm:p-6">
-          <div className="space-y-3">
-            <p className="text-sm font-normal text-zinc-500">Balance Neto</p>
-            <div className="flex items-baseline gap-2">
-              <p className="text-2xl sm:text-3xl font-bold text-white">41.800,00 €</p>
-              <div className="h-8 w-8 flex items-center justify-center">
-                <DollarSign className="h-6 w-6 text-blue-500" />
-              </div>
-            </div>
-            <p className="text-xs flex items-center gap-1 text-green-500">
-              <span className="text-lg">↗</span>
+        <Card className="bg-zinc-950 border-zinc-800 p-4 sm:p-6">
+          <Text className="text-zinc-500">Balance Neto</Text>
+          <Flex className="items-baseline gap-2 mt-2">
+            <Metric className="text-white">41.800,00 €</Metric>
+            <DollarSign className="h-6 w-6 text-blue-500" />
+          </Flex>
+          <Flex className="mt-2">
+            <BadgeDelta deltaType="increase" className="text-green-500">
               +15% vs periodo anterior
-            </p>
-          </div>
-        </div>
+            </BadgeDelta>
+          </Flex>
+        </Card>
 
-        <div className="bg-black border border-zinc-900/50 p-4 sm:p-6">
-          <div className="space-y-3">
-            <p className="text-sm font-normal text-zinc-500">Rendimiento</p>
-            <div className="flex items-baseline gap-2">
-              <p className="text-2xl sm:text-3xl font-bold text-white">26%</p>
-              <div className="h-8 w-8 flex items-center justify-center">
-                <Percent className="h-6 w-6 text-purple-500" />
-              </div>
-            </div>
-            <p className="text-xs flex items-center gap-1 text-green-500">
-              <span className="text-lg">↗</span>
+        <Card className="bg-zinc-950 border-zinc-800 p-4 sm:p-6">
+          <Text className="text-zinc-500">Rendimiento</Text>
+          <Flex className="items-baseline gap-2 mt-2">
+            <Metric className="text-white">26%</Metric>
+            <Percent className="h-6 w-6 text-purple-500" />
+          </Flex>
+          <Flex className="mt-2">
+            <BadgeDelta deltaType="increase" className="text-green-500">
               +2% vs periodo anterior
-            </p>
-          </div>
-        </div>
+            </BadgeDelta>
+          </Flex>
+        </Card>
       </div>
 
       {/* Charts */}
       <div className="grid gap-4 sm:gap-6 grid-cols-1 lg:grid-cols-2">
         {/* Evolution Chart */}
-        <Card className="bg-black border border-zinc-900/50">
-          <CardHeader className="p-4 sm:p-6">
-            <CardTitle className="text-white text-base sm:text-lg font-medium">Evolución Financiera</CardTitle>
-            <p className="text-xs text-zinc-500">
-              Ingresos, gastos y balance en los últimos 6 meses
-            </p>
-          </CardHeader>
-          <CardContent className="p-4 sm:p-6">
-            <ResponsiveContainer width="100%" height={250}>
-              <AreaChart data={evolutionData}>
-                <CartesianGrid strokeDasharray="0" stroke="#27272a" vertical={false} />
-                <XAxis 
-                  dataKey="month" 
-                  stroke="#71717a" 
-                  tick={{ fill: '#71717a', fontSize: 12 }} 
-                  axisLine={{ stroke: '#27272a' }} 
-                />
-                <YAxis 
-                  stroke="#71717a" 
-                  tick={{ fill: '#71717a', fontSize: 12 }} 
-                  axisLine={{ stroke: '#27272a' }}
-                  tickFormatter={(value) => `${value/1000}k€`}
-                />
-                <Tooltip 
-                  contentStyle={{ backgroundColor: '#18181b', border: '1px solid #27272a', borderRadius: '0px' }}
-                  labelStyle={{ color: '#71717a' }}
-                />
-                <Area 
-                  type="monotone" 
-                  dataKey="balance" 
-                  stackId="1"
-                  stroke="transparent" 
-                  fill="#f59e0b"
-                  fillOpacity={0.8}
-                />
-                <Area 
-                  type="monotone" 
-                  dataKey="gastos" 
-                  stackId="1"
-                  stroke="transparent" 
-                  fill="#ec4899"
-                  fillOpacity={0.8}
-                />
-                <Area 
-                  type="monotone" 
-                  dataKey="ingresos" 
-                  stackId="1"
-                  stroke="transparent" 
-                  fill="#3b82f6"
-                  fillOpacity={0.8}
-                />
-              </AreaChart>
-            </ResponsiveContainer>
-            
-            <div className="mt-4 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <span className="text-sm text-zinc-500">Tendencia positiva del 12.5% este semestre</span>
-                <TrendingUp className="h-4 w-4 text-green-500" />
-              </div>
-              <span className="text-xs text-zinc-600">Enero - Junio 2024</span>
-            </div>
-          </CardContent>
+        <Card className="bg-zinc-950 border-zinc-800 p-4 sm:p-6">
+          <Title className="text-white">Evolución Financiera</Title>
+          <Text className="text-zinc-500">Ingresos, gastos y balance en los últimos 6 meses</Text>
+          <AreaChart
+            className="mt-4 h-72"
+            data={evolutionData}
+            index="month"
+            categories={['ingresos', 'gastos', 'balance']}
+            colors={['blue', 'rose', 'amber']}
+            valueFormatter={(value) => `€${(value/1000).toFixed(0)}k`}
+            yAxisWidth={60}
+            showAnimation={true}
+            showLegend={true}
+            showGridLines={true}
+            curveType="monotone"
+          />
+          <Flex className="mt-4 justify-between">
+            <Flex className="items-center gap-2">
+              <Text className="text-zinc-500">Tendencia positiva del 12.5% este semestre</Text>
+              <TrendingUp className="h-4 w-4 text-green-500" />
+            </Flex>
+            <Text className="text-zinc-600 text-xs">Enero - Junio 2024</Text>
+          </Flex>
         </Card>
 
         {/* Expense Distribution */}
-        <Card className="bg-black border border-zinc-900/50">
-          <CardHeader className="p-4 sm:p-6">
-            <CardTitle className="text-white text-base sm:text-lg font-medium">Distribución de Gastos</CardTitle>
-            <p className="text-xs text-zinc-500">
-              Desglose por categorías
-            </p>
-          </CardHeader>
-          <CardContent className="p-4 sm:p-6">
-            <div className="flex items-center justify-center">
-              <ResponsiveContainer width="100%" height={200}>
-                <PieChart>
-                  <Pie
-                    data={expenseDistribution}
-                    cx="50%"
-                    cy="50%"
-                    innerRadius={60}
-                    outerRadius={100}
-                    paddingAngle={2}
-                    dataKey="value"
-                  >
-                    {expenseDistribution.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} />
-                    ))}
-                  </Pie>
-                  <Tooltip 
-                    contentStyle={{ backgroundColor: '#18181b', border: '1px solid #27272a', borderRadius: '0px' }}
-                    labelStyle={{ color: '#71717a' }}
-                  />
-                </PieChart>
-              </ResponsiveContainer>
-            </div>
-            
-            <div className="space-y-2 mt-4 text-sm">
-              {expenseDistribution.map((item) => (
-                <div key={item.name} className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <div className="w-3 h-3" style={{ backgroundColor: item.color }} />
-                    <span className="text-xs sm:text-sm text-zinc-400">{item.name}: {item.value}%</span>
-                  </div>
-                  <span className="text-xs sm:text-sm text-white font-medium">{item.amount}</span>
-                </div>
-              ))}
-            </div>
-            
-            <div className="mt-4 pt-4 border-t border-zinc-900/50">
-              <div className="flex justify-between items-center">
-                <span className="text-sm text-zinc-500">Total gastos: 22.300,00 €</span>
-                <span className="text-xs text-zinc-600">Mayor gasto: Combustible</span>
-              </div>
-            </div>
-          </CardContent>
+        <Card className="bg-zinc-950 border-zinc-800 p-4 sm:p-6">
+          <Title className="text-white">Distribución de Gastos</Title>
+          <Text className="text-zinc-500">Desglose por categorías</Text>
+          <DonutChart
+            className="mt-4 h-64"
+            data={expenseDistribution}
+            category="value"
+            index="name"
+            valueFormatter={(value) => `${value}%`}
+            colors={['blue', 'violet', 'amber', 'emerald', 'cyan']}
+            showAnimation={true}
+            showTooltip={true}
+            variant="donut"
+          />
+          <List className="mt-4">
+            {expenseDistribution.map((item) => (
+              <ListItem key={item.name} className="text-zinc-400">
+                <Flex justifyContent="between" className="w-full">
+                  <Text className="text-zinc-400">{item.name}: {item.value}%</Text>
+                  <Text className="text-white font-medium">{item.amount}</Text>
+                </Flex>
+              </ListItem>
+            ))}
+          </List>
+          <div className="mt-4 pt-4 border-t border-zinc-900/50">
+            <Flex justifyContent="between">
+              <Text className="text-zinc-500">Total gastos: 22.300,00 €</Text>
+              <Text className="text-zinc-600 text-xs">Mayor gasto: Combustible</Text>
+            </Flex>
+          </div>
         </Card>
       </div>
     </div>

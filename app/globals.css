@@ -57,3 +57,59 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Tremor Dark Theme Overrides */
+@layer utilities {
+  .tremor-base {
+    @apply text-zinc-200;
+  }
+  
+  [data-tremor-chart] {
+    @apply text-zinc-200;
+  }
+  
+  /* Chart text colors */
+  .recharts-text,
+  .recharts-cartesian-axis-tick-value {
+    @apply fill-zinc-400;
+  }
+  
+  .recharts-legend-item-text {
+    @apply !text-zinc-400;
+  }
+  
+  .recharts-tooltip-wrapper {
+    @apply !bg-zinc-900 !border-zinc-700;
+  }
+  
+  .recharts-default-tooltip {
+    @apply !bg-zinc-900 !border-zinc-700;
+  }
+  
+  .recharts-tooltip-label {
+    @apply !text-zinc-200;
+  }
+  
+  .recharts-tooltip-item {
+    @apply !text-zinc-300;
+  }
+  
+  /* Grid lines */
+  .recharts-cartesian-grid-horizontal line,
+  .recharts-cartesian-grid-vertical line {
+    @apply stroke-zinc-800;
+  }
+  
+  /* Axis lines */
+  .recharts-xAxis .recharts-cartesian-axis-line,
+  .recharts-yAxis .recharts-cartesian-axis-line {
+    @apply stroke-zinc-700;
+  }
+  
+  /* Make chart colors more vibrant in dark mode */
+  .recharts-area,
+  .recharts-line,
+  .recharts-bar {
+    @apply opacity-90;
+  }
+}

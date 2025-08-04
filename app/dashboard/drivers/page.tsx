@@ -183,11 +183,11 @@ export default function DriversPage() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6 px-2 sm:px-0">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4 flex-1">
-          <div className="relative flex-1 max-w-md">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 flex-1 w-full sm:w-auto">
+          <div className="relative flex-1 sm:max-w-md">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-zinc-500" />
             <Input
               type="text"
@@ -197,7 +197,7 @@ export default function DriversPage() {
               className="pl-10 bg-black border-zinc-800 text-white placeholder-zinc-500"
             />
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 overflow-x-auto pb-2 sm:pb-0">
             {(['all', 'online', 'offline', 'busy'] as const).map((status) => (
               <Button
                 key={status}
@@ -215,85 +215,86 @@ export default function DriversPage() {
             ))}
           </div>
         </div>
-        <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-          <Plus className="h-4 w-4 mr-2" />
-          Añadir Conductor
+        <Button className="bg-blue-600 hover:bg-blue-700 text-white w-full sm:w-auto">
+          <Plus className="h-4 w-4 mr-1 sm:mr-2" />
+          <span className="hidden sm:inline">Añadir Conductor</span>
+          <span className="sm:hidden">Añadir</span>
         </Button>
       </div>
 
       {/* Stats */}
-      <div className="grid gap-4 md:grid-cols-5">
+      <div className="grid gap-3 sm:gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-5">
         <Card className="bg-black border border-zinc-900/50">
-          <CardContent className="p-4">
+          <CardContent className="p-3 sm:p-4">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-zinc-500">Total Conductores</p>
-                <p className="text-2xl font-bold text-white">{stats.total}</p>
+                <p className="text-xl sm:text-2xl font-bold text-white">{stats.total}</p>
               </div>
-              <Users className="h-8 w-8 text-zinc-600" />
+              <Users className="h-6 w-6 sm:h-8 sm:w-8 text-zinc-600 hidden sm:block" />
             </div>
           </CardContent>
         </Card>
         <Card className="bg-black border border-zinc-900/50">
-          <CardContent className="p-4">
+          <CardContent className="p-3 sm:p-4">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-zinc-500">En línea</p>
-                <p className="text-2xl font-bold text-green-500">{stats.online}</p>
+                <p className="text-xl sm:text-2xl font-bold text-green-500">{stats.online}</p>
               </div>
-              <CheckCircle className="h-8 w-8 text-green-500/50" />
+              <CheckCircle className="h-6 w-6 sm:h-8 sm:w-8 text-green-500/50 hidden sm:block" />
             </div>
           </CardContent>
         </Card>
         <Card className="bg-black border border-zinc-900/50">
-          <CardContent className="p-4">
+          <CardContent className="p-3 sm:p-4">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-zinc-500">En viaje</p>
-                <p className="text-2xl font-bold text-yellow-500">{stats.busy}</p>
+                <p className="text-xl sm:text-2xl font-bold text-yellow-500">{stats.busy}</p>
               </div>
-              <Car className="h-8 w-8 text-yellow-500/50" />
+              <Car className="h-6 w-6 sm:h-8 sm:w-8 text-yellow-500/50 hidden sm:block" />
             </div>
           </CardContent>
         </Card>
-        <Card className="bg-black border border-zinc-900/50">
-          <CardContent className="p-4">
+        <Card className="bg-black border border-zinc-900/50 hidden sm:block">
+          <CardContent className="p-3 sm:p-4">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-zinc-500">Rating Promedio</p>
-                <p className="text-2xl font-bold text-yellow-500">{stats.avgRating}</p>
+                <p className="text-xl sm:text-2xl font-bold text-yellow-500">{stats.avgRating}</p>
               </div>
-              <Star className="h-8 w-8 text-yellow-500/50" />
+              <Star className="h-6 w-6 sm:h-8 sm:w-8 text-yellow-500/50 hidden sm:block" />
             </div>
           </CardContent>
         </Card>
-        <Card className="bg-black border border-zinc-900/50">
-          <CardContent className="p-4">
+        <Card className="bg-black border border-zinc-900/50 col-span-2 sm:col-span-1">
+          <CardContent className="p-3 sm:p-4">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-zinc-500">Ingresos Totales</p>
-                <p className="text-xl font-bold text-green-500">{stats.totalRevenue.toLocaleString('es-ES', { minimumFractionDigits: 2 })} €</p>
+                <p className="text-lg sm:text-xl font-bold text-green-500">{stats.totalRevenue.toLocaleString('es-ES', { minimumFractionDigits: 2 })} €</p>
               </div>
-              <DollarSign className="h-8 w-8 text-green-500/50" />
+              <DollarSign className="h-6 w-6 sm:h-8 sm:w-8 text-green-500/50 hidden sm:block" />
             </div>
           </CardContent>
         </Card>
       </div>
 
       {/* Drivers Grid */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-3 sm:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {filteredDrivers.map((driver) => {
           const status = statusConfig[driver.status];
           const StatusIcon = status.icon;
 
           return (
             <Card key={driver.id} className="bg-black border border-zinc-900/50">
-              <CardContent className="p-6">
+              <CardContent className="p-4 sm:p-6">
                 <div className="space-y-4">
                   {/* Header */}
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-3">
-                      <Avatar className="h-12 w-12">
+                      <Avatar className="h-10 w-10 sm:h-12 sm:w-12">
                         <AvatarFallback className="bg-zinc-800 text-white">
                           {driver.name.split(' ').map(n => n[0]).join('')}
                         </AvatarFallback>
@@ -312,7 +313,7 @@ export default function DriversPage() {
                         </div>
                       </div>
                     </div>
-                    <Button variant="ghost" size="icon" className="text-zinc-500 hover:text-white h-8 w-8">
+                    <Button variant="ghost" size="icon" className="text-zinc-500 hover:text-white h-6 w-6 sm:h-8 sm:w-8">
                       <MoreVertical className="h-4 w-4" />
                     </Button>
                   </div>
@@ -328,7 +329,7 @@ export default function DriversPage() {
                   </div>
 
                   {/* Stats */}
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-2 gap-2 sm:gap-3">
                     <div>
                       <p className="text-xs text-zinc-500">Viajes (mes)</p>
                       <p className="text-sm font-semibold text-white">{driver.totalTrips}</p>
@@ -355,7 +356,7 @@ export default function DriversPage() {
                   </div>
 
                   {/* Location & Activity */}
-                  <div className="pt-3 border-t border-zinc-900/50 space-y-1">
+                  <div className="pt-2 sm:pt-3 border-t border-zinc-900/50 space-y-1">
                     <div className="flex items-center gap-2 text-xs text-zinc-500">
                       <MapPin className="h-3 w-3" />
                       <span>{driver.location}</span>
@@ -367,7 +368,7 @@ export default function DriversPage() {
                   </div>
 
                   {/* Documents Status */}
-                  <div className="flex items-center gap-3 pt-3 border-t border-zinc-900/50">
+                  <div className="flex items-center gap-2 sm:gap-3 pt-2 sm:pt-3 border-t border-zinc-900/50">
                     <span className="text-xs text-zinc-500">Documentos:</span>
                     <div className="flex items-center gap-2">
                       {driver.documents.license ? (

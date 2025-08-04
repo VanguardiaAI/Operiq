@@ -156,11 +156,11 @@ export default function VehiclesPage() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6 px-2 sm:px-0">
       {/* Header with search and filters */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4 flex-1">
-          <div className="relative flex-1 max-w-md">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 flex-1 w-full sm:w-auto">
+          <div className="relative flex-1 sm:max-w-md">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-zinc-500" />
             <Input
               type="text"
@@ -170,7 +170,7 @@ export default function VehiclesPage() {
               className="pl-10 bg-black border-zinc-800 text-white placeholder-zinc-500"
             />
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 overflow-x-auto pb-2 sm:pb-0">
             {(['all', 'active', 'inactive', 'maintenance'] as const).map((status) => (
               <Button
                 key={status}
@@ -188,91 +188,92 @@ export default function VehiclesPage() {
             ))}
           </div>
         </div>
-        <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-          <Plus className="h-4 w-4 mr-2" />
-          Añadir Vehículo
+        <Button className="bg-blue-600 hover:bg-blue-700 text-white w-full sm:w-auto">
+          <Plus className="h-4 w-4 mr-1 sm:mr-2" />
+          <span className="hidden sm:inline">Añadir Vehículo</span>
+          <span className="sm:hidden">Añadir</span>
         </Button>
       </div>
 
       {/* Stats Cards */}
-      <div className="grid gap-4 md:grid-cols-5">
+      <div className="grid gap-3 sm:gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-5">
         <Card className="bg-black border border-zinc-900/50">
-          <CardContent className="p-4">
+          <CardContent className="p-3 sm:p-4">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-zinc-500">Total Vehículos</p>
-                <p className="text-2xl font-bold text-white">{stats.total}</p>
+                <p className="text-xl sm:text-2xl font-bold text-white">{stats.total}</p>
               </div>
-              <Car className="h-8 w-8 text-zinc-600" />
+              <Car className="h-6 w-6 sm:h-8 sm:w-8 text-zinc-600 hidden sm:block" />
             </div>
           </CardContent>
         </Card>
         <Card className="bg-black border border-zinc-900/50">
-          <CardContent className="p-4">
+          <CardContent className="p-3 sm:p-4">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-zinc-500">Activos</p>
-                <p className="text-2xl font-bold text-green-500">{stats.active}</p>
+                <p className="text-xl sm:text-2xl font-bold text-green-500">{stats.active}</p>
               </div>
-              <CheckCircle className="h-8 w-8 text-green-500/50" />
+              <CheckCircle className="h-6 w-6 sm:h-8 sm:w-8 text-green-500/50 hidden sm:block" />
             </div>
           </CardContent>
         </Card>
         <Card className="bg-black border border-zinc-900/50">
-          <CardContent className="p-4">
+          <CardContent className="p-3 sm:p-4">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-zinc-500">Inactivos</p>
-                <p className="text-2xl font-bold text-red-500">{stats.inactive}</p>
+                <p className="text-xl sm:text-2xl font-bold text-red-500">{stats.inactive}</p>
               </div>
-              <XCircle className="h-8 w-8 text-red-500/50" />
+              <XCircle className="h-6 w-6 sm:h-8 sm:w-8 text-red-500/50 hidden sm:block" />
             </div>
           </CardContent>
         </Card>
         <Card className="bg-black border border-zinc-900/50">
-          <CardContent className="p-4">
+          <CardContent className="p-3 sm:p-4">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-zinc-500">Mantenimiento</p>
-                <p className="text-2xl font-bold text-yellow-500">{stats.maintenance}</p>
+                <p className="text-xl sm:text-2xl font-bold text-yellow-500">{stats.maintenance}</p>
               </div>
-              <AlertTriangle className="h-8 w-8 text-yellow-500/50" />
+              <AlertTriangle className="h-6 w-6 sm:h-8 sm:w-8 text-yellow-500/50 hidden sm:block" />
             </div>
           </CardContent>
         </Card>
         <Card className="bg-black border border-zinc-900/50">
-          <CardContent className="p-4">
+          <CardContent className="p-3 sm:p-4">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-zinc-500">Eficiencia Media</p>
-                <p className="text-2xl font-bold text-blue-500">{stats.avgEfficiency}%</p>
+                <p className="text-xl sm:text-2xl font-bold text-blue-500">{stats.avgEfficiency}%</p>
               </div>
-              <Activity className="h-8 w-8 text-blue-500/50" />
+              <Activity className="h-6 w-6 sm:h-8 sm:w-8 text-blue-500/50 hidden sm:block" />
             </div>
           </CardContent>
         </Card>
       </div>
 
       {/* Vehicles List */}
-      <div className="space-y-4">
+      <div className="space-y-3 sm:space-y-4">
         {filteredVehicles.map((vehicle) => {
           const status = statusConfig[vehicle.status];
           const StatusIcon = status.icon;
 
           return (
             <Card key={vehicle.id} className="bg-black border border-zinc-900/50">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-6">
+              <CardContent className="p-4 sm:p-6">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                  <div className="flex items-start sm:items-center gap-3 sm:gap-6 w-full sm:w-auto">
                     {/* Vehicle Icon */}
-                    <div className="bg-zinc-900/50 p-4">
-                      <Car className="h-8 w-8 text-zinc-400" />
+                    <div className="bg-zinc-900/50 p-3 sm:p-4">
+                      <Car className="h-6 w-6 sm:h-8 sm:w-8 text-zinc-400" />
                     </div>
 
                     {/* Vehicle Info */}
-                    <div className="space-y-1">
-                      <div className="flex items-center gap-3">
-                        <h3 className="text-lg font-semibold text-white">{vehicle.plate}</h3>
+                    <div className="space-y-1 flex-1">
+                      <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                        <h3 className="text-base sm:text-lg font-semibold text-white">{vehicle.plate}</h3>
                         <div className={`px-2 py-1 ${status.bgColor} flex items-center gap-1`}>
                           <StatusIcon className={`h-3 w-3 ${status.color}`} />
                           <span className={`text-xs ${status.color}`}>{status.label}</span>
@@ -283,10 +284,10 @@ export default function VehiclesPage() {
                           </Badge>
                         ))}
                       </div>
-                      <p className="text-sm text-zinc-500">
+                      <p className="text-xs sm:text-sm text-zinc-500">
                         {vehicle.model} ({vehicle.year}) • {vehicle.driver}
                       </p>
-                      <div className="flex items-center gap-4 text-xs text-zinc-600">
+                      <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs text-zinc-600">
                         <span className="flex items-center gap-1">
                           <MapPin className="h-3 w-3" />
                           {vehicle.lastLocation}
@@ -304,19 +305,19 @@ export default function VehiclesPage() {
                   </div>
 
                   {/* Vehicle Metrics */}
-                  <div className="flex items-center gap-8">
-                    <div className="text-right">
+                  <div className="grid grid-cols-3 sm:flex sm:items-center gap-4 sm:gap-8 w-full sm:w-auto">
+                    <div className="text-left sm:text-right">
                       <p className="text-xs text-zinc-500">Kilometraje</p>
-                      <p className="text-lg font-semibold text-white">{vehicle.mileage.toLocaleString()} km</p>
+                      <p className="text-sm sm:text-lg font-semibold text-white">{vehicle.mileage.toLocaleString()} km</p>
                     </div>
-                    <div className="text-right">
-                      <p className="text-xs text-zinc-500">Ingresos (mes)</p>
-                      <p className="text-lg font-semibold text-green-500">{vehicle.revenue}</p>
+                    <div className="text-left sm:text-right">
+                      <p className="text-xs text-zinc-500">Ingresos</p>
+                      <p className="text-sm sm:text-lg font-semibold text-green-500">{vehicle.revenue}</p>
                     </div>
-                    <div className="text-right">
+                    <div className="text-left sm:text-right">
                       <p className="text-xs text-zinc-500">Eficiencia</p>
-                      <div className="flex items-center gap-2">
-                        <p className="text-lg font-semibold text-white">{vehicle.efficiency}%</p>
+                      <div className="flex items-center gap-1 sm:gap-2">
+                        <p className="text-sm sm:text-lg font-semibold text-white">{vehicle.efficiency}%</p>
                         {vehicle.efficiency > 85 ? (
                           <TrendingUp className="h-4 w-4 text-green-500" />
                         ) : (
@@ -324,7 +325,7 @@ export default function VehiclesPage() {
                         )}
                       </div>
                     </div>
-                    <Button variant="ghost" size="icon" className="text-zinc-500 hover:text-white">
+                    <Button variant="ghost" size="icon" className="text-zinc-500 hover:text-white hidden sm:flex">
                       <MoreVertical className="h-4 w-4" />
                     </Button>
                   </div>

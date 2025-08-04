@@ -133,10 +133,10 @@ export default function ReportsPage() {
   const [selectedReport, setSelectedReport] = useState<string | null>(null);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6 px-2 sm:px-0">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div className="flex gap-2">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="flex gap-2 overflow-x-auto pb-2 sm:pb-0">
           {(['week', 'month', 'quarter', 'year'] as const).map((period) => (
             <Button
               key={period}
@@ -154,20 +154,21 @@ export default function ReportsPage() {
             </Button>
           ))}
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <Button variant="outline" size="sm" className="bg-transparent border-zinc-800 text-zinc-400 hover:bg-zinc-900/50 hover:text-white">
-            <Calendar className="h-4 w-4 mr-2" />
+            <Calendar className="h-4 w-4 mr-1 sm:mr-2" />
             Último mes
           </Button>
           <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-            <Download className="h-4 w-4 mr-2" />
-            Exportar Todo
+            <Download className="h-4 w-4 mr-1 sm:mr-2" />
+            <span className="hidden sm:inline">Exportar Todo</span>
+            <span className="sm:hidden">Exportar</span>
           </Button>
         </div>
       </div>
 
       {/* Report Types */}
-      <div className="grid gap-4 md:grid-cols-4">
+      <div className="grid gap-3 sm:gap-4 grid-cols-2 md:grid-cols-4">
         {reportTypes.map((report) => {
           const Icon = report.icon;
           return (
@@ -178,14 +179,14 @@ export default function ReportsPage() {
               }`}
               onClick={() => setSelectedReport(report.id)}
             >
-              <CardContent className="p-6">
+              <CardContent className="p-4 sm:p-6">
                 <div className="space-y-3">
-                  <div className={`inline-flex p-3 ${report.bgColor}`}>
-                    <Icon className={`h-6 w-6 ${report.color}`} />
+                  <div className={`inline-flex p-2 sm:p-3 ${report.bgColor}`}>
+                    <Icon className={`h-5 w-5 sm:h-6 sm:w-6 ${report.color}`} />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-white">{report.title}</h3>
-                    <p className="text-xs text-zinc-500 mt-1">{report.description}</p>
+                    <h3 className="font-semibold text-white text-sm sm:text-base">{report.title}</h3>
+                    <p className="text-xs text-zinc-500 mt-1 hidden sm:block">{report.description}</p>
                   </div>
                   <Button 
                     size="sm" 
@@ -203,15 +204,15 @@ export default function ReportsPage() {
       </div>
 
       {/* Charts */}
-      <div className="grid gap-6 lg:grid-cols-2">
+      <div className="grid gap-4 sm:gap-6 grid-cols-1 lg:grid-cols-2">
         {/* Performance Chart */}
         <Card className="bg-black border border-zinc-900/50">
-          <CardHeader>
-            <CardTitle className="text-white text-lg font-medium">Rendimiento General</CardTitle>
+          <CardHeader className="p-4 sm:p-6">
+            <CardTitle className="text-white text-base sm:text-lg font-medium">Rendimiento General</CardTitle>
             <p className="text-xs text-zinc-500">Evolución de métricas clave</p>
           </CardHeader>
-          <CardContent>
-            <ResponsiveContainer width="100%" height={250}>
+          <CardContent className="p-4 sm:p-6">
+            <ResponsiveContainer width="100%" height={200}>
               <RechartsLineChart data={performanceData}>
                 <CartesianGrid strokeDasharray="0" stroke="#27272a" vertical={false} />
                 <XAxis 
@@ -250,12 +251,12 @@ export default function ReportsPage() {
 
         {/* Platform Comparison */}
         <Card className="bg-black border border-zinc-900/50">
-          <CardHeader>
-            <CardTitle className="text-white text-lg font-medium">Comparativa de Plataformas</CardTitle>
+          <CardHeader className="p-4 sm:p-6">
+            <CardTitle className="text-white text-base sm:text-lg font-medium">Comparativa de Plataformas</CardTitle>
             <p className="text-xs text-zinc-500">Rendimiento por plataforma</p>
           </CardHeader>
-          <CardContent>
-            <ResponsiveContainer width="100%" height={250}>
+          <CardContent className="p-4 sm:p-6">
+            <ResponsiveContainer width="100%" height={200}>
               <BarChart data={platformComparison}>
                 <CartesianGrid strokeDasharray="0" stroke="#27272a" vertical={false} />
                 <XAxis 
@@ -283,12 +284,12 @@ export default function ReportsPage() {
 
       {/* Efficiency Distribution */}
       <Card className="bg-black border border-zinc-900/50">
-        <CardHeader>
-          <CardTitle className="text-white text-lg font-medium">Distribución de Eficiencia</CardTitle>
+        <CardHeader className="p-4 sm:p-6">
+          <CardTitle className="text-white text-base sm:text-lg font-medium">Distribución de Eficiencia</CardTitle>
           <p className="text-xs text-zinc-500">Conductores por nivel de rendimiento</p>
         </CardHeader>
-        <CardContent>
-          <div className="grid gap-6 lg:grid-cols-2">
+        <CardContent className="p-4 sm:p-6">
+          <div className="grid gap-4 sm:gap-6 grid-cols-1 lg:grid-cols-2">
             <ResponsiveContainer width="100%" height={200}>
               <RechartsPieChart>
                 <Pie
@@ -327,20 +328,20 @@ export default function ReportsPage() {
 
       {/* Recent Reports */}
       <Card className="bg-black border border-zinc-900/50">
-        <CardHeader className="flex flex-row items-center justify-between">
+        <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-4 sm:p-6">
           <div>
-            <CardTitle className="text-white text-lg font-medium">Informes Recientes</CardTitle>
+            <CardTitle className="text-white text-base sm:text-lg font-medium">Informes Recientes</CardTitle>
             <p className="text-xs text-zinc-500">Últimos informes generados</p>
           </div>
           <Button variant="outline" size="sm" className="bg-transparent border-zinc-800 text-zinc-400 hover:bg-zinc-900/50 hover:text-white">
             Ver todos
           </Button>
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-4 sm:p-6">
           <div className="space-y-3">
             {recentReports.map((report) => (
-              <div key={report.id} className="flex items-center justify-between p-3 border border-zinc-900/50">
-                <div className="flex items-center gap-3">
+              <div key={report.id} className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-3 border border-zinc-900/50 gap-3">
+                <div className="flex items-center gap-2 sm:gap-3">
                   {report.format === 'pdf' ? (
                     <div className="bg-red-500/10 p-2">
                       <File className="h-6 w-6 text-red-500" />
@@ -351,7 +352,7 @@ export default function ReportsPage() {
                     </div>
                   )}
                   <div>
-                    <p className="text-sm font-medium text-white">{report.title}</p>
+                    <p className="text-xs sm:text-sm font-medium text-white">{report.title}</p>
                     <div className="flex items-center gap-3 mt-1">
                       <span className="text-xs text-zinc-500">
                         <Clock className="h-3 w-3 inline mr-1" />

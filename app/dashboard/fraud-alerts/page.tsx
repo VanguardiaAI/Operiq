@@ -176,11 +176,11 @@ export default function FraudAlertsPage() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6 px-2 sm:px-0">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4 flex-1">
-          <div className="relative flex-1 max-w-md">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 flex-1 w-full sm:w-auto">
+          <div className="relative flex-1 sm:max-w-md">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-zinc-500" />
             <Input
               type="text"
@@ -190,11 +190,11 @@ export default function FraudAlertsPage() {
               className="pl-10 bg-black border-zinc-800 text-white placeholder-zinc-500"
             />
           </div>
-          <div className="flex gap-2">
+          <div className="flex flex-col sm:flex-row gap-2">
             <select
               value={filterSeverity}
               onChange={(e) => setFilterSeverity(e.target.value as 'all' | 'high' | 'medium' | 'low')}
-              className="px-3 py-1.5 bg-black border border-zinc-800 text-white text-sm"
+              className="px-3 py-1.5 bg-black border border-zinc-800 text-white text-xs sm:text-sm"
             >
               <option value="all">Todas las severidades</option>
               <option value="high">Alta</option>
@@ -204,7 +204,7 @@ export default function FraudAlertsPage() {
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value as 'all' | 'new' | 'investigating' | 'resolved')}
-              className="px-3 py-1.5 bg-black border border-zinc-800 text-white text-sm"
+              className="px-3 py-1.5 bg-black border border-zinc-800 text-white text-xs sm:text-sm"
             >
               <option value="all">Todos los estados</option>
               <option value="new">Nueva</option>
@@ -214,66 +214,67 @@ export default function FraudAlertsPage() {
             </select>
           </div>
         </div>
-        <Button variant="outline" className="bg-transparent border-zinc-800 text-zinc-400 hover:bg-zinc-900/50 hover:text-white">
-          <Filter className="h-4 w-4 mr-2" />
-          Filtros avanzados
+        <Button variant="outline" className="bg-transparent border-zinc-800 text-zinc-400 hover:bg-zinc-900/50 hover:text-white w-full sm:w-auto">
+          <Filter className="h-4 w-4 mr-1 sm:mr-2" />
+          <span className="hidden sm:inline">Filtros avanzados</span>
+          <span className="sm:hidden">Filtros</span>
         </Button>
       </div>
 
       {/* Stats Cards */}
-      <div className="grid gap-4 md:grid-cols-4">
+      <div className="grid gap-3 sm:gap-4 grid-cols-2 md:grid-cols-4">
         <Card className="bg-black border border-zinc-900/50">
-          <CardContent className="p-4">
+          <CardContent className="p-3 sm:p-4">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-zinc-500">Alertas Totales</p>
-                <p className="text-2xl font-bold text-white">{stats.total}</p>
+                <p className="text-xl sm:text-2xl font-bold text-white">{stats.total}</p>
                 <p className="text-xs text-zinc-600 mt-1">Últimos 30 días</p>
               </div>
-              <Shield className="h-8 w-8 text-zinc-600" />
+              <Shield className="h-6 w-6 sm:h-8 sm:w-8 text-zinc-600 hidden sm:block" />
             </div>
           </CardContent>
         </Card>
         <Card className="bg-black border border-zinc-900/50">
-          <CardContent className="p-4">
+          <CardContent className="p-3 sm:p-4">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-zinc-500">Nuevas Alertas</p>
-                <p className="text-2xl font-bold text-blue-500">{stats.new}</p>
+                <p className="text-xl sm:text-2xl font-bold text-blue-500">{stats.new}</p>
                 <p className="text-xs text-zinc-600 mt-1">Requieren atención</p>
               </div>
-              <AlertCircle className="h-8 w-8 text-blue-500/50" />
+              <AlertCircle className="h-6 w-6 sm:h-8 sm:w-8 text-blue-500/50 hidden sm:block" />
             </div>
           </CardContent>
         </Card>
         <Card className="bg-black border border-zinc-900/50">
-          <CardContent className="p-4">
+          <CardContent className="p-3 sm:p-4">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-zinc-500">Alta Prioridad</p>
-                <p className="text-2xl font-bold text-red-500">{stats.high}</p>
+                <p className="text-xl sm:text-2xl font-bold text-red-500">{stats.high}</p>
                 <p className="text-xs text-zinc-600 mt-1">Críticas</p>
               </div>
-              <AlertTriangle className="h-8 w-8 text-red-500/50" />
+              <AlertTriangle className="h-6 w-6 sm:h-8 sm:w-8 text-red-500/50 hidden sm:block" />
             </div>
           </CardContent>
         </Card>
         <Card className="bg-black border border-zinc-900/50">
-          <CardContent className="p-4">
+          <CardContent className="p-3 sm:p-4">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-zinc-500">Impacto Financiero</p>
-                <p className="text-2xl font-bold text-yellow-500">{stats.totalImpact.toLocaleString('es-ES', { minimumFractionDigits: 2 })} €</p>
+                <p className="text-lg sm:text-2xl font-bold text-yellow-500">{stats.totalImpact.toLocaleString('es-ES', { minimumFractionDigits: 2 })} €</p>
                 <p className="text-xs text-zinc-600 mt-1">Pérdida potencial</p>
               </div>
-              <TrendingUp className="h-8 w-8 text-yellow-500/50" />
+              <TrendingUp className="h-6 w-6 sm:h-8 sm:w-8 text-yellow-500/50 hidden sm:block" />
             </div>
           </CardContent>
         </Card>
       </div>
 
       {/* Alerts List */}
-      <div className="space-y-4">
+      <div className="space-y-3 sm:space-y-4">
         {filteredAlerts.map((alert) => {
           const type = typeConfig[alert.type];
           const TypeIcon = type.icon;
@@ -282,12 +283,12 @@ export default function FraudAlertsPage() {
 
           return (
             <Card key={alert.id} className="bg-black border border-zinc-900/50">
-              <CardContent className="p-6">
-                <div className="flex items-start justify-between">
-                  <div className="flex items-start gap-4 flex-1">
+              <CardContent className="p-4 sm:p-6">
+                <div className="flex flex-col sm:flex-row items-start justify-between gap-4">
+                  <div className="flex items-start gap-3 sm:gap-4 flex-1">
                     {/* Icon */}
-                    <div className={`p-3 bg-zinc-900/50`}>
-                      <TypeIcon className={`h-6 w-6 ${type.color}`} />
+                    <div className={`p-2 sm:p-3 bg-zinc-900/50`}>
+                      <TypeIcon className={`h-5 w-5 sm:h-6 sm:w-6 ${type.color}`} />
                     </div>
 
                     {/* Content */}
@@ -317,7 +318,7 @@ export default function FraudAlertsPage() {
                       </div>
 
                       {/* Details */}
-                      <div className="flex items-center gap-6 text-xs text-zinc-500">
+                      <div className="flex flex-wrap items-center gap-3 sm:gap-6 text-xs text-zinc-500">
                         <span className="flex items-center gap-1">
                           <User className="h-3 w-3" />
                           {alert.driver}
@@ -339,7 +340,7 @@ export default function FraudAlertsPage() {
                       </div>
 
                       {/* Evidence */}
-                      <div className="flex items-center gap-4 pt-3 border-t border-zinc-900/50">
+                      <div className="flex flex-wrap items-start gap-2 sm:gap-4 pt-3 border-t border-zinc-900/50">
                         <span className="text-xs text-zinc-500">Evidencia:</span>
                         {alert.evidence.map((ev, idx) => (
                           <div key={idx} className="text-xs">
@@ -350,10 +351,10 @@ export default function FraudAlertsPage() {
                       </div>
 
                       {/* Actions */}
-                      <div className="flex items-center gap-2 pt-3">
+                      <div className="flex items-center gap-2 pt-3 w-full sm:w-auto">
                         <Button 
                           size="sm" 
-                          className="bg-blue-600 hover:bg-blue-700 text-white text-xs"
+                          className="bg-blue-600 hover:bg-blue-700 text-white text-xs flex-1 sm:flex-initial"
                         >
                           <Eye className="h-3 w-3 mr-1" />
                           Investigar
@@ -361,7 +362,7 @@ export default function FraudAlertsPage() {
                         <Button 
                           size="sm" 
                           variant="outline"
-                          className="bg-transparent border-zinc-800 text-zinc-400 hover:bg-zinc-900/50 hover:text-white text-xs"
+                          className="bg-transparent border-zinc-800 text-zinc-400 hover:bg-zinc-900/50 hover:text-white text-xs flex-1 sm:flex-initial"
                         >
                           Ver detalles
                           <ChevronRight className="h-3 w-3 ml-1" />

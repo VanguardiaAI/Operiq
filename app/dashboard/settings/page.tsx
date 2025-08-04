@@ -102,14 +102,14 @@ export default function SettingsPage() {
   const [fraudThreshold, setFraudThreshold] = useState('medium');
 
   return (
-    <div className="grid gap-6 lg:grid-cols-4">
+    <div className="grid gap-4 sm:gap-6 grid-cols-1 lg:grid-cols-4 px-2 sm:px-0">
       {/* Sidebar */}
-      <div className="lg:col-span-1">
+      <div className="lg:col-span-1 order-2 lg:order-1">
         <Card className="bg-black border border-zinc-900/50">
           <CardHeader>
-            <CardTitle className="text-white text-lg">Configuración</CardTitle>
+            <CardTitle className="text-white text-base sm:text-lg">Configuración</CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="p-3 sm:p-6">
             <nav className="space-y-1">
               {configSections.map((section) => {
                 const Icon = section.icon;
@@ -117,16 +117,16 @@ export default function SettingsPage() {
                   <button
                     key={section.id}
                     onClick={() => setActiveSection(section.id)}
-                    className={`w-full flex items-center gap-3 px-3 py-2 text-sm transition-colors ${
+                    className={`w-full flex items-center gap-2 sm:gap-3 px-2 sm:px-3 py-2 text-xs sm:text-sm transition-colors ${
                       activeSection === section.id
                         ? 'bg-zinc-900/50 text-white border-l-2 border-blue-500'
                         : 'text-zinc-500 hover:bg-zinc-900/30 hover:text-white'
                     }`}
                   >
-                    <Icon className={`h-4 w-4 ${section.color}`} />
+                    <Icon className={`h-3 w-3 sm:h-4 sm:w-4 ${section.color}`} />
                     <div className="text-left">
                       <p className="font-medium">{section.title}</p>
-                      <p className="text-xs text-zinc-600">{section.description}</p>
+                      <p className="text-xs text-zinc-600 hidden sm:block">{section.description}</p>
                     </div>
                   </button>
                 );
@@ -137,17 +137,17 @@ export default function SettingsPage() {
       </div>
 
       {/* Content */}
-      <div className="lg:col-span-3 space-y-6">
+      <div className="lg:col-span-3 space-y-4 sm:space-y-6 order-1 lg:order-2">
         {/* Profile Section */}
         {activeSection === 'profile' && (
           <>
             <Card className="bg-black border border-zinc-900/50">
-              <CardHeader>
-                <CardTitle className="text-white text-lg">Información de la Empresa</CardTitle>
+              <CardHeader className="p-4 sm:p-6">
+                <CardTitle className="text-white text-base sm:text-lg">Información de la Empresa</CardTitle>
                 <p className="text-xs text-zinc-500">Datos básicos de la organización</p>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="grid gap-4 md:grid-cols-2">
+              <CardContent className="space-y-4 p-4 sm:p-6">
+                <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
                   <div className="space-y-2">
                     <Label htmlFor="company" className="text-zinc-400">Nombre de la empresa</Label>
                     <Input
@@ -204,23 +204,23 @@ export default function SettingsPage() {
         {activeSection === 'platforms' && (
           <>
             <Card className="bg-black border border-zinc-900/50">
-              <CardHeader>
-                <CardTitle className="text-white text-lg">Plataformas Conectadas</CardTitle>
+              <CardHeader className="p-4 sm:p-6">
+                <CardTitle className="text-white text-base sm:text-lg">Plataformas Conectadas</CardTitle>
                 <p className="text-xs text-zinc-500">Gestiona las integraciones con servicios externos</p>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-4 p-4 sm:p-6">
                 {platformIntegrations.map((platform) => (
-                  <div key={platform.name} className="flex items-center justify-between p-4 border border-zinc-900/50">
-                    <div className="flex items-center gap-4">
-                      <div className="bg-zinc-900/50 p-3">
-                        <Globe className="h-6 w-6 text-zinc-400" />
+                  <div key={platform.name} className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-3 sm:p-4 border border-zinc-900/50 gap-3">
+                    <div className="flex items-center gap-3 sm:gap-4">
+                      <div className="bg-zinc-900/50 p-2 sm:p-3">
+                        <Globe className="h-5 w-5 sm:h-6 sm:w-6 text-zinc-400" />
                       </div>
                       <div>
                         <p className="font-medium text-white">{platform.name}</p>
                         <p className="text-xs text-zinc-500">{platform.lastSync}</p>
                       </div>
                     </div>
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2 sm:gap-3">
                       {platform.status === 'connected' && (
                         <Badge variant="outline" className="border-green-500/50 text-green-500">
                           <CheckCircle className="h-3 w-3 mr-1" />
@@ -262,14 +262,14 @@ export default function SettingsPage() {
         {activeSection === 'notifications' && (
           <>
             <Card className="bg-black border border-zinc-900/50">
-              <CardHeader>
-                <CardTitle className="text-white text-lg">Preferencias de Notificación</CardTitle>
+              <CardHeader className="p-4 sm:p-6">
+                <CardTitle className="text-white text-base sm:text-lg">Preferencias de Notificación</CardTitle>
                 <p className="text-xs text-zinc-500">Configura cómo recibir alertas</p>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="space-y-4 sm:space-y-6 p-4 sm:p-6">
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2 sm:gap-3">
                       <Mail className="h-5 w-5 text-zinc-400" />
                       <div>
                         <p className="text-sm font-medium text-white">Notificaciones por Email</p>
@@ -290,7 +290,7 @@ export default function SettingsPage() {
                     </button>
                   </div>
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2 sm:gap-3">
                       <Bell className="h-5 w-5 text-zinc-400" />
                       <div>
                         <p className="text-sm font-medium text-white">Notificaciones Push</p>
@@ -311,7 +311,7 @@ export default function SettingsPage() {
                     </button>
                   </div>
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2 sm:gap-3">
                       <Phone className="h-5 w-5 text-zinc-400" />
                       <div>
                         <p className="text-sm font-medium text-white">SMS</p>
@@ -353,9 +353,9 @@ export default function SettingsPage() {
         {activeSection === 'api' && (
           <>
             <Card className="bg-black border border-zinc-900/50">
-              <CardHeader className="flex flex-row items-center justify-between">
+              <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-4 sm:p-6">
                 <div>
-                  <CardTitle className="text-white text-lg">API Keys</CardTitle>
+                  <CardTitle className="text-white text-base sm:text-lg">API Keys</CardTitle>
                   <p className="text-xs text-zinc-500">Gestiona las claves de acceso a la API</p>
                 </div>
                 <Button className="bg-blue-600 hover:bg-blue-700 text-white">
@@ -363,9 +363,9 @@ export default function SettingsPage() {
                   Nueva clave
                 </Button>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-4 p-4 sm:p-6">
                 {apiKeys.map((key) => (
-                  <div key={key.id} className="flex items-center justify-between p-4 border border-zinc-900/50">
+                  <div key={key.id} className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-3 sm:p-4 border border-zinc-900/50 gap-3">
                     <div className="space-y-1">
                       <p className="font-medium text-white">{key.name}</p>
                       <div className="flex items-center gap-2">
@@ -391,11 +391,11 @@ export default function SettingsPage() {
               </CardContent>
             </Card>
             <Card className="bg-black border border-zinc-900/50">
-              <CardHeader>
-                <CardTitle className="text-white text-lg">Webhooks</CardTitle>
+              <CardHeader className="p-4 sm:p-6">
+                <CardTitle className="text-white text-base sm:text-lg">Webhooks</CardTitle>
                 <p className="text-xs text-zinc-500">Endpoints para recibir eventos</p>
               </CardHeader>
-              <CardContent>
+              <CardContent className="p-4 sm:p-6">
                 <div className="space-y-2">
                   <Label htmlFor="webhook" className="text-zinc-400">URL del Webhook</Label>
                   <div className="flex gap-2">

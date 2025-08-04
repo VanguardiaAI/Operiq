@@ -71,49 +71,49 @@ const statusConfig = {
 
 export default function PlatformsPage() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6 px-2 sm:px-0">
       <div>
-        <h1 className="text-2xl font-semibold text-white">Plataformas</h1>
-        <p className="text-sm text-gray-400">
+        <h1 className="text-xl sm:text-2xl font-semibold text-white">Plataformas</h1>
+        <p className="text-xs sm:text-sm text-gray-400">
           Gestión de conexiones con plataformas de transporte
         </p>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {platforms.map((platform) => {
           const statusInfo = statusConfig[platform.status];
           const StatusIcon = statusInfo.icon;
 
           return (
             <Card key={platform.id} className="bg-black border border-zinc-900/50">
-              <CardHeader className="pb-4">
+              <CardHeader className="pb-3 sm:pb-4">
                 <div className="flex items-start justify-between">
                   <div>
-                    <h3 className="text-xl font-semibold text-white">
+                    <h3 className="text-lg sm:text-xl font-semibold text-white">
                       {platform.name}
                     </h3>
-                    <p className="text-sm text-zinc-500">
+                    <p className="text-xs sm:text-sm text-zinc-500">
                       {platform.vehicles} vehículos · {platform.drivers} conductores
                     </p>
                   </div>
-                  <div className="bg-zinc-900/50 p-3">
-                    <Settings className="h-6 w-6 text-zinc-500" />
+                  <div className="bg-zinc-900/50 p-2 sm:p-3">
+                    <Settings className="h-5 w-5 sm:h-6 sm:w-6 text-zinc-500" />
                   </div>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center gap-2 text-sm text-zinc-500">
-                  <Clock className="h-4 w-4" />
+              <CardContent className="space-y-3 sm:space-y-4">
+                <div className="flex items-center gap-2 text-xs sm:text-sm text-zinc-500">
+                  <Clock className="h-3 w-3 sm:h-4 sm:w-4" />
                   <span>Última sincronización:</span>
-                  <span className="text-zinc-300">{platform.lastSync}</span>
+                  <span className="text-zinc-300 text-xs sm:text-sm">{platform.lastSync}</span>
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <StatusIcon className={`h-4 w-4 ${statusInfo.className}`} />
-                  <span className="text-sm text-zinc-500">Estado:</span>
+                  <StatusIcon className={`h-3 w-3 sm:h-4 sm:w-4 ${statusInfo.className}`} />
+                  <span className="text-xs sm:text-sm text-zinc-500">Estado:</span>
                   <div className="flex items-center gap-2">
                     <span className={`h-2 w-2 ${statusInfo.dotClassName}`} />
-                    <span className={`text-sm ${statusInfo.className}`}>
+                    <span className={`text-xs sm:text-sm ${statusInfo.className}`}>
                       {statusInfo.label}
                     </span>
                   </div>
@@ -123,7 +123,7 @@ export default function PlatformsPage() {
                   variant="outline" 
                   className="w-full bg-transparent border-zinc-800 text-zinc-400 hover:bg-zinc-900/50 hover:text-white"
                 >
-                  <Settings className="h-4 w-4 mr-2" />
+                  <Settings className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                   Configurar
                 </Button>
               </CardContent>
@@ -133,11 +133,11 @@ export default function PlatformsPage() {
 
         {/* Add New Platform Card */}
         <Card className="bg-transparent border-2 border-dashed border-zinc-900/50 hover:border-zinc-800 transition-colors cursor-pointer">
-          <CardContent className="flex flex-col items-center justify-center h-full min-h-[280px] space-y-3">
-            <div className="bg-zinc-900/50 p-3 rounded-full border border-zinc-800">
-              <Plus className="h-6 w-6 text-zinc-500" />
+          <CardContent className="flex flex-col items-center justify-center h-full min-h-[200px] sm:min-h-[280px] space-y-3">
+            <div className="bg-zinc-900/50 p-2 sm:p-3 rounded-full border border-zinc-800">
+              <Plus className="h-5 w-5 sm:h-6 sm:w-6 text-zinc-500" />
             </div>
-            <span className="text-zinc-500 font-medium">
+            <span className="text-zinc-500 font-medium text-sm sm:text-base">
               Añadir nueva plataforma
             </span>
           </CardContent>

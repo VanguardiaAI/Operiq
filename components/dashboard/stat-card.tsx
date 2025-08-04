@@ -12,7 +12,6 @@ interface StatCardProps {
   variant?: 'default' | 'success' | 'danger' | 'info';
 }
 
-
 const iconColors = {
   default: 'text-zinc-600',
   success: 'text-green-500',
@@ -20,36 +19,29 @@ const iconColors = {
   info: 'text-blue-500',
 };
 
-export default function StatCard({
-  title,
-  value,
-  icon,
-  trend,
-  variant = 'default',
-}: StatCardProps) {
+const StatCard = ({ title, value, icon, trend, variant = 'default' }: StatCardProps) => {
   return (
-    <Card className="bg-black border border-zinc-900/50">
-      <CardContent className="p-6">
+    <Card className="bg-zinc-950 border-zinc-800">
+      <CardContent className="p-4 md:p-6">
         <div className="flex items-center justify-between">
-          <div className="space-y-3">
-            <p className="text-sm font-normal text-zinc-500">{title}</p>
-            <p className="text-3xl font-bold text-white">{value}</p>
-            {trend && (
-              <p
-                className={cn(
-                  'text-xs flex items-center gap-1',
-                  trend.isPositive ? 'text-green-500' : 'text-red-500'
-                )}
-              >
-                <span className="text-lg">
-                  {trend.isPositive ? '↗' : '↘'}
+          <div className="flex-1">
+            <p className="text-xs md:text-sm font-medium text-zinc-500">{title}</p>
+            <div className="mt-1 md:mt-2 flex items-baseline gap-2">
+              <h3 className="text-xl md:text-2xl font-bold text-white">{value}</h3>
+              {trend && (
+                <span
+                  className={cn(
+                    'text-xs md:text-sm font-medium',
+                    trend.isPositive ? 'text-green-500' : 'text-red-500'
+                  )}
+                >
+                  {trend.isPositive ? '↑' : '↓'} {trend.value}
                 </span>
-                {trend.value}
-              </p>
-            )}
+              )}
+            </div>
           </div>
           {icon && (
-            <div className={iconColors[variant]}>
+            <div className={cn('p-2 md:p-3 rounded-lg bg-zinc-900/50', iconColors[variant])}>
               {icon}
             </div>
           )}
@@ -57,4 +49,6 @@ export default function StatCard({
       </CardContent>
     </Card>
   );
-}
+};
+
+export default StatCard;

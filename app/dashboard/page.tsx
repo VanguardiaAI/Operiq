@@ -54,8 +54,8 @@ const fraudAlerts = [
 
 export default function DashboardPage() {
   return (
-    <div className="space-y-6">
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+    <div className="space-y-4 sm:space-y-6 px-2 sm:px-0">
+      <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard
           title="Ingresos Totales"
           value="32.800,00 €"
@@ -86,16 +86,16 @@ export default function DashboardPage() {
         />
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-2">
+      <div className="grid gap-4 sm:gap-6 grid-cols-1 lg:grid-cols-2">
         <Card className="bg-black border border-zinc-900/50">
-          <CardHeader>
-            <CardTitle className="text-white text-lg font-medium">Rendimiento Financiero</CardTitle>
+          <CardHeader className="p-4 sm:p-6">
+            <CardTitle className="text-white text-base sm:text-lg font-medium">Rendimiento Financiero</CardTitle>
             <p className="text-xs text-zinc-500">
               Ingresos vs Gastos en los últimos 6 meses
             </p>
           </CardHeader>
-          <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+          <CardContent className="p-4 sm:p-6">
+            <ResponsiveContainer width="100%" height={250}>
               <LineChart data={financialData}>
                 <CartesianGrid strokeDasharray="0" stroke="#27272a" vertical={false} />
                 <XAxis dataKey="month" stroke="#71717a" tick={{ fill: '#71717a', fontSize: 12 }} axisLine={{ stroke: '#27272a' }} />
@@ -131,14 +131,14 @@ export default function DashboardPage() {
         </Card>
 
         <Card className="bg-black border border-zinc-900/50">
-          <CardHeader>
-            <CardTitle className="text-white text-lg font-medium">Distribución por Plataforma</CardTitle>
+          <CardHeader className="p-4 sm:p-6">
+            <CardTitle className="text-white text-base sm:text-lg font-medium">Distribución por Plataforma</CardTitle>
             <p className="text-xs text-zinc-500">
               Porcentaje de ingresos por plataforma
             </p>
           </CardHeader>
-          <CardContent className="flex items-center justify-center">
-            <ResponsiveContainer width="100%" height={300}>
+          <CardContent className="flex items-center justify-center p-4 sm:p-6">
+            <ResponsiveContainer width="100%" height={250}>
               <PieChart>
                 <Pie
                   data={platformData}
@@ -146,7 +146,7 @@ export default function DashboardPage() {
                   cy="50%"
                   labelLine={false}
                   label={({ name, value }) => `${name}: ${value}%`}
-                  outerRadius={100}
+                  outerRadius={80}
                   fill="#8884d8"
                   dataKey="value"
                 >
@@ -164,16 +164,16 @@ export default function DashboardPage() {
         </Card>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-2">
+      <div className="grid gap-4 sm:gap-6 grid-cols-1 lg:grid-cols-2">
         <Card className="bg-black border border-zinc-900/50">
-          <CardHeader>
-            <CardTitle className="text-white text-lg font-medium">Rendimiento de la Flota</CardTitle>
+          <CardHeader className="p-4 sm:p-6">
+            <CardTitle className="text-white text-base sm:text-lg font-medium">Rendimiento de la Flota</CardTitle>
             <p className="text-xs text-zinc-500">
               Eficiencia de cada vehículo (0-100%)
             </p>
           </CardHeader>
-          <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+          <CardContent className="p-4 sm:p-6">
+            <ResponsiveContainer width="100%" height={250}>
               <BarChart data={fleetPerformance}>
                 <CartesianGrid strokeDasharray="0" stroke="#27272a" vertical={false} />
                 <XAxis dataKey="vehicle" stroke="#71717a" tick={{ fill: '#71717a', fontSize: 12 }} axisLine={{ stroke: '#27272a' }} />
@@ -189,23 +189,23 @@ export default function DashboardPage() {
         </Card>
 
         <Card className="bg-black border border-zinc-900/50">
-          <CardHeader className="flex flex-row items-center justify-between">
+          <CardHeader className="flex flex-row items-center justify-between p-4 sm:p-6">
             <div>
-              <CardTitle className="text-white text-lg font-medium">Alertas de Fraude</CardTitle>
+              <CardTitle className="text-white text-base sm:text-lg font-medium">Alertas de Fraude</CardTitle>
               <p className="text-xs text-zinc-500">
                 Últimas alertas detectadas por IA
               </p>
             </div>
-            <div className="bg-yellow-500/10 p-2">
-              <AlertCircle className="h-5 w-5 text-yellow-500" />
+            <div className="bg-yellow-500/10 p-1.5 sm:p-2">
+              <AlertCircle className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-500" />
             </div>
           </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
+          <CardContent className="p-4 sm:p-6">
+            <div className="space-y-3 sm:space-y-4">
               {fraudAlerts.map((alert) => (
                 <div
                   key={alert.id}
-                  className="border border-zinc-900/50 bg-zinc-900/20 p-4"
+                  className="border border-zinc-900/50 bg-zinc-900/20 p-3 sm:p-4"
                 >
                   <div className="flex items-start justify-between">
                     <div className="space-y-1">

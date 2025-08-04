@@ -46,10 +46,10 @@ export default function FinancePage() {
   const [period, setPeriod] = useState<'mensual' | 'trimestral' | 'anual'>('mensual');
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6 px-2 sm:px-0">
       {/* Header with filters */}
-      <div className="flex items-center justify-between">
-        <div className="flex gap-2">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="flex gap-2 overflow-x-auto pb-2 sm:pb-0">
           <Button
             variant={period === 'mensual' ? 'default' : 'outline'}
             onClick={() => setPeriod('mensual')}
@@ -79,7 +79,7 @@ export default function FinancePage() {
           </Button>
         </div>
         
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <Button variant="outline" size="sm" className="bg-transparent border-zinc-800 text-zinc-400 hover:bg-zinc-900/50 hover:text-white">
             <Calendar className="h-4 w-4 mr-2" />
             Último mes
@@ -95,12 +95,12 @@ export default function FinancePage() {
       </div>
 
       {/* Stats Cards */}
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        <div className="bg-black border border-zinc-900/50 p-6">
+      <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="bg-black border border-zinc-900/50 p-4 sm:p-6">
           <div className="space-y-3">
             <p className="text-sm font-normal text-zinc-500">Ingresos Totales</p>
             <div className="flex items-baseline gap-2">
-              <p className="text-3xl font-bold text-white">162.800,00 €</p>
+              <p className="text-2xl sm:text-3xl font-bold text-white">162.800,00 €</p>
               <div className="h-8 w-8 flex items-center justify-center">
                 <TrendingUp className="h-6 w-6 text-green-500" />
               </div>
@@ -112,11 +112,11 @@ export default function FinancePage() {
           </div>
         </div>
 
-        <div className="bg-black border border-zinc-900/50 p-6">
+        <div className="bg-black border border-zinc-900/50 p-4 sm:p-6">
           <div className="space-y-3">
             <p className="text-sm font-normal text-zinc-500">Gastos Totales</p>
             <div className="flex items-baseline gap-2">
-              <p className="text-3xl font-bold text-white">121.000,00 €</p>
+              <p className="text-2xl sm:text-3xl font-bold text-white">121.000,00 €</p>
               <div className="h-8 w-8 flex items-center justify-center">
                 <TrendingDown className="h-6 w-6 text-red-500" />
               </div>
@@ -128,11 +128,11 @@ export default function FinancePage() {
           </div>
         </div>
 
-        <div className="bg-black border border-zinc-900/50 p-6">
+        <div className="bg-black border border-zinc-900/50 p-4 sm:p-6">
           <div className="space-y-3">
             <p className="text-sm font-normal text-zinc-500">Balance Neto</p>
             <div className="flex items-baseline gap-2">
-              <p className="text-3xl font-bold text-white">41.800,00 €</p>
+              <p className="text-2xl sm:text-3xl font-bold text-white">41.800,00 €</p>
               <div className="h-8 w-8 flex items-center justify-center">
                 <DollarSign className="h-6 w-6 text-blue-500" />
               </div>
@@ -144,11 +144,11 @@ export default function FinancePage() {
           </div>
         </div>
 
-        <div className="bg-black border border-zinc-900/50 p-6">
+        <div className="bg-black border border-zinc-900/50 p-4 sm:p-6">
           <div className="space-y-3">
             <p className="text-sm font-normal text-zinc-500">Rendimiento</p>
             <div className="flex items-baseline gap-2">
-              <p className="text-3xl font-bold text-white">26%</p>
+              <p className="text-2xl sm:text-3xl font-bold text-white">26%</p>
               <div className="h-8 w-8 flex items-center justify-center">
                 <Percent className="h-6 w-6 text-purple-500" />
               </div>
@@ -162,17 +162,17 @@ export default function FinancePage() {
       </div>
 
       {/* Charts */}
-      <div className="grid gap-6 lg:grid-cols-2">
+      <div className="grid gap-4 sm:gap-6 grid-cols-1 lg:grid-cols-2">
         {/* Evolution Chart */}
         <Card className="bg-black border border-zinc-900/50">
-          <CardHeader>
-            <CardTitle className="text-white text-lg font-medium">Evolución Financiera</CardTitle>
+          <CardHeader className="p-4 sm:p-6">
+            <CardTitle className="text-white text-base sm:text-lg font-medium">Evolución Financiera</CardTitle>
             <p className="text-xs text-zinc-500">
               Ingresos, gastos y balance en los últimos 6 meses
             </p>
           </CardHeader>
-          <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+          <CardContent className="p-4 sm:p-6">
+            <ResponsiveContainer width="100%" height={250}>
               <AreaChart data={evolutionData}>
                 <CartesianGrid strokeDasharray="0" stroke="#27272a" vertical={false} />
                 <XAxis 
@@ -230,15 +230,15 @@ export default function FinancePage() {
 
         {/* Expense Distribution */}
         <Card className="bg-black border border-zinc-900/50">
-          <CardHeader>
-            <CardTitle className="text-white text-lg font-medium">Distribución de Gastos</CardTitle>
+          <CardHeader className="p-4 sm:p-6">
+            <CardTitle className="text-white text-base sm:text-lg font-medium">Distribución de Gastos</CardTitle>
             <p className="text-xs text-zinc-500">
               Desglose por categorías
             </p>
           </CardHeader>
-          <CardContent>
+          <CardContent className="p-4 sm:p-6">
             <div className="flex items-center justify-center">
-              <ResponsiveContainer width="100%" height={250}>
+              <ResponsiveContainer width="100%" height={200}>
                 <PieChart>
                   <Pie
                     data={expenseDistribution}
@@ -261,14 +261,14 @@ export default function FinancePage() {
               </ResponsiveContainer>
             </div>
             
-            <div className="space-y-2 mt-4">
+            <div className="space-y-2 mt-4 text-sm">
               {expenseDistribution.map((item) => (
                 <div key={item.name} className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3" style={{ backgroundColor: item.color }} />
-                    <span className="text-sm text-zinc-400">{item.name}: {item.value}%</span>
+                    <span className="text-xs sm:text-sm text-zinc-400">{item.name}: {item.value}%</span>
                   </div>
-                  <span className="text-sm text-white font-medium">{item.amount}</span>
+                  <span className="text-xs sm:text-sm text-white font-medium">{item.amount}</span>
                 </div>
               ))}
             </div>

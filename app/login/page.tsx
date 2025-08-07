@@ -44,10 +44,12 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-black flex items-center justify-center p-4">
-      <Card className="w-full max-w-md bg-zinc-950 border-zinc-800">
-        <CardHeader className="space-y-1">
+      <Card className="w-full max-w-md bg-gradient-to-br from-zinc-900 to-black border border-zinc-800/50 shadow-2xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.8)] transition-all duration-300 group overflow-hidden relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
+        <div className="relative z-10">
+        <CardHeader className="space-y-6 p-6">
           <div className="flex flex-col items-center justify-center mb-4 space-y-4">
-            <div className="relative w-32 h-32">
+            <div className="relative w-24 h-24 mx-auto">
               <Image
                 src="/logo_operiq.webp"
                 alt="OPERIQ Logo"
@@ -57,21 +59,17 @@ export default function LoginPage() {
               />
             </div>
           </div>
-          <CardTitle className="text-2xl text-center text-white">OPERIQ</CardTitle>
-          <CardDescription className="text-center text-zinc-400">
-            Plataforma de gestión VTC
-          </CardDescription>
-          <div className="mt-2 p-2 bg-yellow-500/10 border border-yellow-500/20">
-            <p className="text-xs text-yellow-500 text-center">
-              <strong>Demo:</strong> Usa admin@operiq.com con cualquier contraseña
-              <br />o cualquier email con contraseña &quot;admin123&quot;
-            </p>
+          <div className="text-center">
+            <CardTitle className="text-3xl font-bold text-white mb-2">OPERIQ</CardTitle>
+            <CardDescription className="text-zinc-400 text-lg">
+              Plataforma de gestión VTC
+            </CardDescription>
           </div>
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-6 pt-0">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-zinc-300">
+              <Label htmlFor="email" className="text-zinc-400 font-medium">
                 Email
               </Label>
               <Input
@@ -81,11 +79,11 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="bg-zinc-900/50 border-zinc-800 text-white placeholder:text-zinc-500"
+                className="bg-zinc-900/50 border-zinc-800/50 text-white placeholder:text-zinc-500 h-12 transition-all duration-200 focus:border-yellow-500/50"
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-zinc-300">
+              <Label htmlFor="password" className="text-zinc-400 font-medium">
                 Contraseña
               </Label>
               <Input
@@ -95,23 +93,24 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="bg-zinc-900/50 border-zinc-800 text-white placeholder:text-zinc-500"
+                className="bg-zinc-900/50 border-zinc-800/50 text-white placeholder:text-zinc-500 h-12 transition-all duration-200 focus:border-yellow-500/50"
               />
             </div>
             {error && (
-              <div className="text-red-500 text-sm">
+              <div className="bg-red-900/20 border border-red-900/50 p-3 text-red-400 text-sm">
                 {error}
               </div>
             )}
             <Button
               type="submit"
-              className="w-full bg-blue-500 hover:bg-blue-600"
+              className="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-semibold h-12 transition-all duration-200 shadow-lg hover:shadow-xl"
               disabled={isLoading}
             >
               {isLoading ? 'Iniciando sesión...' : 'Iniciar sesión'}
             </Button>
           </form>
         </CardContent>
+        </div>
       </Card>
     </div>
   );

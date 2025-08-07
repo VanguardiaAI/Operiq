@@ -1164,3 +1164,43 @@ Response received from https://node.bolt.eu/fleet-integration-gateway/fleetInteg
  ✓ Starting...
  ✓ Compiled middleware in 56ms
  ✓ Ready in 791ms
+ ○ Compiling /dashboard ...
+ ✓ Compiled /dashboard in 2s
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/static/development/_buildManifest.js.tmp.tlqnrvn7ss'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/static/development/_buildManifest.js.tmp.tlqnrvn7ss'
+}
+ ✓ Compiled /_error in 395ms
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/static/development/_buildManifest.js.tmp.mysnk5mksos'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/static/development/_buildManifest.js.tmp.mysnk5mksos'
+}
+[Error: ENOENT: no such file or directory, open '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/static/development/_buildManifest.js.tmp.tlqnrvn7ss'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/static/development/_buildManifest.js.tmp.tlqnrvn7ss'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/static/development/_buildManifest.js.tmp.7hj7kcdj645'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/static/development/_buildManifest.js.tmp.7hj7kcdj645'
+}
+[Error: ENOENT: no such file or directory, open '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/static/development/_buildManifest.js.tmp.pdumjbw0a7'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/static/development/_buildManifest.js.tmp.pdumjbw0a7'
+}
+ ✓ Compiled /favicon.ico in 76ms
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/static/development/_buildManifest.js.tmp.ttx84mxt4mj'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/static/development/_buildManifest.js.tmp.ttx84mxt4mj'
+}

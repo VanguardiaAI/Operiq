@@ -8,14 +8,10 @@ import { Input } from '@/components/ui/input';
 import {
   Car,
   Search,
-  MapPin,
-  Fuel,
-  Activity,
   AlertTriangle,
   CheckCircle,
   XCircle,
   Clock,
-  TrendingUp,
   MoreVertical,
   RefreshCw,
 } from 'lucide-react';
@@ -102,11 +98,11 @@ export default function VehiclesPage() {
       } else {
         throw new Error(data.error || 'Error al cargar vehículos');
       }
-    } catch (error: any) {
+    } catch (error) {
       console.error('Error fetching vehicles:', error);
       toast({
         title: 'Error',
-        description: error.message || 'No se pudieron cargar los vehículos',
+        description: (error as Error).message || 'No se pudieron cargar los vehículos',
         variant: 'destructive',
       });
     } finally {
@@ -117,6 +113,7 @@ export default function VehiclesPage() {
 
   useEffect(() => {
     fetchVehicles();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, filterStatus, searchTerm]);
 
   const stats: VehicleStats = {

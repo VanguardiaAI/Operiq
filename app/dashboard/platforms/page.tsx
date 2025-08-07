@@ -156,6 +156,7 @@ export default function PlatformsPage() {
 
   useEffect(() => {
     loadPlatforms();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSync = async (platformId: string, platformName: string) => {
@@ -178,10 +179,10 @@ export default function PlatformsPage() {
         } else {
           throw new Error(data.error || 'Error en la sincronización');
         }
-      } catch (error: any) {
+      } catch (error) {
         toast({
           title: 'Error',
-          description: error.message || 'No se pudo sincronizar',
+          description: (error as Error).message || 'No se pudo sincronizar',
           variant: 'destructive',
         });
       }

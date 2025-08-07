@@ -9,17 +9,11 @@ import { Input } from '@/components/ui/input';
 import {
   Users,
   Search,
-  Star,
-  TrendingUp,
-  TrendingDown,
   Clock,
-  Car,
-  DollarSign,
   AlertCircle,
   CheckCircle,
   XCircle,
   MoreVertical,
-  MapPin,
   RefreshCw,
   Phone,
   Mail,
@@ -117,11 +111,11 @@ export default function DriversPage() {
       } else {
         throw new Error(data.error || 'Error al cargar conductores');
       }
-    } catch (error: any) {
+    } catch (error) {
       console.error('Error fetching drivers:', error);
       toast({
         title: 'Error',
-        description: error.message || 'No se pudieron cargar los conductores',
+        description: (error as Error).message || 'No se pudieron cargar los conductores',
         variant: 'destructive',
       });
     } finally {
@@ -132,6 +126,7 @@ export default function DriversPage() {
 
   useEffect(() => {
     fetchDrivers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, filterStatus, searchTerm]);
 
   const stats: DriverStats = {
@@ -162,7 +157,7 @@ export default function DriversPage() {
     if (!reason) return '';
     
     // Remove HTML tags and decode entities
-    let text = reason
+    const text = reason
       .replace(/<[^>]*>/g, '') // Remove HTML tags
       .replace(/&nbsp;/g, ' ')
       .replace(/&amp;/g, '&')

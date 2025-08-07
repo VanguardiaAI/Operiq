@@ -1091,3 +1091,76 @@ Response received from https://node.bolt.eu/fleet-integration-gateway/fleetInteg
  GET /api/vehicles?limit=1 200 in 145ms
  GET /api/vehicles?limit=1 200 in 139ms
  GET /api/drivers?limit=1 200 in 140ms
+ ✓ Compiled in 125ms
+ ✓ Compiled in 110ms
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/server/pages/_app/build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/server/pages/_app/build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/server/pages/_app/build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/server/pages/_app/build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/server/pages/_app/build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/vanguardia/Desktop/Operiq/operiq-dashboard/.next/server/pages/_app/build-manifest.json'
+}
+ ⚠ Found a change in next.config.ts. Restarting the server to apply the changes...
+   ▲ Next.js 15.4.5 (Turbopack)
+   - Local:        http://localhost:3001
+   - Network:      http://192.168.1.102:3001
+   - Environments: .env.local
+   - Experiments (use with caution):
+     · serverActions
+
+ ✓ Starting...
+ ✓ Compiled middleware in 56ms
+ ✓ Ready in 791ms

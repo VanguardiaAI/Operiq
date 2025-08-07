@@ -16,6 +16,15 @@ const config: Config = {
       },
     },
     extend: {
+      fontFamily: {
+        'helixa-thin': ['var(--font-helixa-thin)', 'sans-serif'],
+        'helixa-light': ['var(--font-helixa-light)', 'sans-serif'],
+        'helixa-regular': ['var(--font-helixa-regular)', 'sans-serif'],
+        'helixa-book': ['var(--font-helixa-book)', 'sans-serif'],
+        'helixa-bold': ['var(--font-helixa-bold)', 'sans-serif'],
+        'helixa-black': ['var(--font-helixa-black)', 'sans-serif'],
+        'sans': ['var(--font-helixa-regular)', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

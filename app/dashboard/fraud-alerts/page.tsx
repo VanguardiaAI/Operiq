@@ -176,7 +176,7 @@ export default function FraudAlertsPage() {
   };
 
   return (
-    <div className="space-y-4 sm:space-y-6 px-2 sm:px-0">
+    <div className="space-y-4 sm:space-y-6 px-4 sm:px-6 lg:px-8">
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 flex-1 w-full sm:w-auto">
@@ -187,14 +187,14 @@ export default function FraudAlertsPage() {
               placeholder="Buscar alertas..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 bg-black border-zinc-800 text-white placeholder-zinc-500"
+              className="pl-10 bg-black border-zinc-900/50 text-white placeholder-zinc-500"
             />
           </div>
           <div className="flex flex-col sm:flex-row gap-2">
             <select
               value={filterSeverity}
               onChange={(e) => setFilterSeverity(e.target.value as 'all' | 'high' | 'medium' | 'low')}
-              className="px-3 py-1.5 bg-black border border-zinc-800 text-white text-xs sm:text-sm"
+              className="px-3 py-1.5 bg-black border border-zinc-900/50 text-white text-xs sm:text-sm"
             >
               <option value="all">Todas las severidades</option>
               <option value="high">Alta</option>
@@ -204,7 +204,7 @@ export default function FraudAlertsPage() {
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value as 'all' | 'new' | 'investigating' | 'resolved')}
-              className="px-3 py-1.5 bg-black border border-zinc-800 text-white text-xs sm:text-sm"
+              className="px-3 py-1.5 bg-black border border-zinc-900/50 text-white text-xs sm:text-sm"
             >
               <option value="all">Todos los estados</option>
               <option value="new">Nueva</option>
@@ -214,7 +214,7 @@ export default function FraudAlertsPage() {
             </select>
           </div>
         </div>
-        <Button variant="outline" className="bg-transparent border-zinc-800 text-zinc-400 hover:bg-zinc-900/50 hover:text-white w-full sm:w-auto">
+        <Button variant="outline" className="bg-[#232c43] border-0 text-white hover:bg-[#232c43]/80 w-full sm:w-auto">
           <Filter className="h-4 w-4 mr-1 sm:mr-2" />
           <span className="hidden sm:inline">Filtros avanzados</span>
           <span className="sm:hidden">Filtros</span>
@@ -223,7 +223,7 @@ export default function FraudAlertsPage() {
 
       {/* Stats Cards */}
       <div className="grid gap-3 sm:gap-4 grid-cols-2 md:grid-cols-4">
-        <Card className="bg-black border border-zinc-900/50">
+        <Card className="bg-black border border-zinc-900/50 shadow-xl hover:shadow-2xl transition-shadow duration-200">
           <CardContent className="p-3 sm:p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -231,11 +231,11 @@ export default function FraudAlertsPage() {
                 <p className="text-xl sm:text-2xl font-bold text-white">{stats.total}</p>
                 <p className="text-xs text-zinc-600 mt-1">Últimos 30 días</p>
               </div>
-              <Shield className="h-6 w-6 sm:h-8 sm:w-8 text-zinc-600 hidden sm:block" />
+              <Shield className="h-6 w-6 sm:h-8 sm:w-8 text-yellow-500 hidden sm:block" />
             </div>
           </CardContent>
         </Card>
-        <Card className="bg-black border border-zinc-900/50">
+        <Card className="bg-black border border-zinc-900/50 shadow-xl hover:shadow-2xl transition-shadow duration-200">
           <CardContent className="p-3 sm:p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -243,11 +243,11 @@ export default function FraudAlertsPage() {
                 <p className="text-xl sm:text-2xl font-bold text-blue-500">{stats.new}</p>
                 <p className="text-xs text-zinc-600 mt-1">Requieren atención</p>
               </div>
-              <AlertCircle className="h-6 w-6 sm:h-8 sm:w-8 text-blue-500/50 hidden sm:block" />
+              <AlertCircle className="h-6 w-6 sm:h-8 sm:w-8 text-yellow-500/50 hidden sm:block" />
             </div>
           </CardContent>
         </Card>
-        <Card className="bg-black border border-zinc-900/50">
+        <Card className="bg-black border border-zinc-900/50 shadow-xl hover:shadow-2xl transition-shadow duration-200">
           <CardContent className="p-3 sm:p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -255,11 +255,11 @@ export default function FraudAlertsPage() {
                 <p className="text-xl sm:text-2xl font-bold text-red-500">{stats.high}</p>
                 <p className="text-xs text-zinc-600 mt-1">Críticas</p>
               </div>
-              <AlertTriangle className="h-6 w-6 sm:h-8 sm:w-8 text-red-500/50 hidden sm:block" />
+              <AlertTriangle className="h-6 w-6 sm:h-8 sm:w-8 text-yellow-500/50 hidden sm:block" />
             </div>
           </CardContent>
         </Card>
-        <Card className="bg-black border border-zinc-900/50">
+        <Card className="bg-black border border-zinc-900/50 shadow-xl hover:shadow-2xl transition-shadow duration-200">
           <CardContent className="p-3 sm:p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -354,7 +354,7 @@ export default function FraudAlertsPage() {
                       <div className="flex items-center gap-2 pt-3 w-full sm:w-auto">
                         <Button 
                           size="sm" 
-                          className="bg-blue-600 hover:bg-blue-700 text-white text-xs flex-1 sm:flex-initial"
+                          className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold text-xs flex-1 sm:flex-initial"
                         >
                           <Eye className="h-3 w-3 mr-1" />
                           Investigar
@@ -362,7 +362,7 @@ export default function FraudAlertsPage() {
                         <Button 
                           size="sm" 
                           variant="outline"
-                          className="bg-transparent border-zinc-800 text-zinc-400 hover:bg-zinc-900/50 hover:text-white text-xs flex-1 sm:flex-initial"
+                          className="bg-[#232c43] border-0 text-white hover:bg-[#232c43]/80 text-xs flex-1 sm:flex-initial"
                         >
                           Ver detalles
                           <ChevronRight className="h-3 w-3 ml-1" />

@@ -54,45 +54,45 @@ const fraudAlerts = [
 
 export default function DashboardPage() {
   return (
-    <div className="space-y-4 sm:space-y-6 px-2 sm:px-0">
+    <div className="space-y-6 px-4 sm:px-6 lg:px-8">
       <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard
           title="Ingresos Totales"
           value="32.800,00 €"
-          icon={<DollarSign className="h-8 w-8" />}
+          icon={<DollarSign className="h-5 w-5" />}
           trend={{ value: '+12% vs mes anterior', isPositive: true }}
           variant="success"
         />
         <StatCard
           title="Gastos Operativos"
           value="23.000,00 €"
-          icon={<DollarSign className="h-8 w-8" />}
+          icon={<DollarSign className="h-5 w-5" />}
           trend={{ value: '-5% vs mes anterior', isPositive: false }}
           variant="danger"
         />
         <StatCard
           title="Flota Total"
           value="5 vehículos"
-          icon={<Car className="h-8 w-8" />}
+          icon={<Car className="h-5 w-5" />}
           trend={{ value: '+1 este mes', isPositive: true }}
           variant="info"
         />
         <StatCard
           title="Conductores Activos"
           value="7"
-          icon={<Users className="h-8 w-8" />}
+          icon={<Users className="h-5 w-5" />}
           trend={{ value: '+2 este mes', isPositive: true }}
           variant="success"
         />
       </div>
 
       <div className="grid gap-4 sm:gap-6 grid-cols-1 lg:grid-cols-2">
-        <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-4 sm:p-6">
+        <div className="bg-black border border-zinc-900/50 p-4 sm:p-6 shadow-xl hover:shadow-2xl transition-shadow duration-200">
           <h3 className="text-lg font-semibold text-white">Rendimiento Financiero</h3>
-          <p className="text-sm text-zinc-400 mt-1">Ingresos vs Gastos en los últimos 6 meses</p>
+          <p className="text-sm text-zinc-500 mt-1">Ingresos vs Gastos en los últimos 6 meses</p>
           <ResponsiveContainer width="100%" height={288} className="mt-4">
             <LineChart data={financialData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#27272a" />
+              <CartesianGrid strokeDasharray="3 3" stroke="#27272a40" />
               <XAxis 
                 dataKey="month" 
                 stroke="#a1a1aa" 
@@ -105,7 +105,7 @@ export default function DashboardPage() {
               />
               <Tooltip 
                 contentStyle={{ 
-                  backgroundColor: '#18181b', 
+                  backgroundColor: '#000000', 
                   border: '1px solid #27272a',
                   borderRadius: '6px'
                 }}
@@ -148,9 +148,9 @@ export default function DashboardPage() {
           </ResponsiveContainer>
         </div>
 
-        <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-4 sm:p-6">
+        <div className="bg-black border border-zinc-900/50 p-4 sm:p-6 shadow-xl hover:shadow-2xl transition-shadow duration-200">
           <h3 className="text-lg font-semibold text-white">Distribución por Plataforma</h3>
-          <p className="text-sm text-zinc-400 mt-1">Porcentaje de ingresos por plataforma</p>
+          <p className="text-sm text-zinc-500 mt-1">Porcentaje de ingresos por plataforma</p>
           <ResponsiveContainer width="100%" height={288} className="mt-4">
             <PieChart>
               <Pie
@@ -168,7 +168,7 @@ export default function DashboardPage() {
               </Pie>
               <Tooltip 
                 contentStyle={{ 
-                  backgroundColor: '#18181b', 
+                  backgroundColor: '#000000', 
                   border: '1px solid #27272a',
                   borderRadius: '6px'
                 }}
@@ -205,12 +205,12 @@ export default function DashboardPage() {
       </div>
 
       <div className="grid gap-4 sm:gap-6 grid-cols-1 lg:grid-cols-2">
-        <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-4 sm:p-6">
+        <div className="bg-black border border-zinc-900/50 p-4 sm:p-6 shadow-xl hover:shadow-2xl transition-shadow duration-200">
           <h3 className="text-lg font-semibold text-white">Rendimiento de la Flota</h3>
-          <p className="text-sm text-zinc-400 mt-1">Eficiencia de cada vehículo (0-100%)</p>
+          <p className="text-sm text-zinc-500 mt-1">Eficiencia de cada vehículo (0-100%)</p>
           <ResponsiveContainer width="100%" height={288} className="mt-4">
             <BarChart data={fleetPerformance}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#27272a" />
+              <CartesianGrid strokeDasharray="3 3" stroke="#27272a40" />
               <XAxis 
                 dataKey="vehicle" 
                 stroke="#a1a1aa" 
@@ -224,7 +224,7 @@ export default function DashboardPage() {
               />
               <Tooltip 
                 contentStyle={{ 
-                  backgroundColor: '#18181b', 
+                  backgroundColor: '#000000', 
                   border: '1px solid #27272a',
                   borderRadius: '6px'
                 }}
@@ -241,13 +241,13 @@ export default function DashboardPage() {
           </ResponsiveContainer>
         </div>
 
-        <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-4 sm:p-6">
+        <div className="bg-black border border-zinc-900/50 p-4 sm:p-6 shadow-xl hover:shadow-2xl transition-shadow duration-200">
           <div className="flex items-start justify-between mb-4">
             <div>
               <h3 className="text-lg font-semibold text-white">Alertas de Fraude</h3>
-              <p className="text-sm text-zinc-400 mt-1">Últimas alertas detectadas por IA</p>
+              <p className="text-sm text-zinc-500 mt-1">Últimas alertas detectadas por IA</p>
             </div>
-            <div className="bg-yellow-500/10 p-1.5 sm:p-2 rounded">
+            <div className="bg-yellow-500/10 p-1.5 sm:p-2">
               <AlertCircle className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-500" />
             </div>
           </div>
@@ -255,7 +255,7 @@ export default function DashboardPage() {
             {fraudAlerts.map((alert) => (
               <div
                 key={alert.id}
-                className="border border-zinc-900/50 bg-zinc-900/20 p-3 sm:p-4 rounded"
+                className="border border-zinc-900/50 bg-[#232c43]/20 p-3 sm:p-4"
               >
                 <div className="flex items-start justify-between">
                   <div className="space-y-1">
@@ -266,11 +266,11 @@ export default function DashboardPage() {
                       </div>
                     </div>
                     <p className="text-sm font-medium text-white">{alert.vehicle}</p>
-                    <p className="text-xs text-gray-400">
+                    <p className="text-xs text-zinc-500">
                       {alert.description}
                     </p>
                   </div>
-                  <span className="text-xs text-gray-400">
+                  <span className="text-xs text-zinc-500">
                     {alert.timestamp}
                   </span>
                 </div>

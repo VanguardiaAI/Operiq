@@ -3,6 +3,48 @@
 @tailwind utilities;
 
 @layer base {
+  body {
+    font-family: var(--font-helixa-regular), sans-serif;
+    font-weight: 400;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-helixa-bold), sans-serif;
+    font-weight: 700;
+  }
+  
+  .font-thin {
+    font-family: var(--font-helixa-thin), sans-serif;
+    font-weight: 100;
+  }
+  
+  .font-light {
+    font-family: var(--font-helixa-light), sans-serif;
+    font-weight: 300;
+  }
+  
+  .font-regular {
+    font-family: var(--font-helixa-regular), sans-serif;
+    font-weight: 400;
+  }
+  
+  .font-book {
+    font-family: var(--font-helixa-book), sans-serif;
+    font-weight: 400;
+  }
+  
+  .font-bold {
+    font-family: var(--font-helixa-bold), sans-serif;
+    font-weight: 700;
+  }
+  
+  .font-black {
+    font-family: var(--font-helixa-black), sans-serif;
+    font-weight: 900;
+  }
+}
+
+@layer base {
   :root {
     --background: 0 0% 0%;
     --foreground: 0 0% 100%;
@@ -71,11 +113,11 @@
   }
   
   .recharts-tooltip-wrapper {
-    @apply !bg-zinc-900 !border-zinc-700 rounded-md;
+    @apply !bg-zinc-900 !border-zinc-700;
   }
   
   .recharts-default-tooltip {
-    @apply !bg-zinc-900 !border-zinc-700 rounded-md;
+    @apply !bg-zinc-900 !border-zinc-700;
   }
   
   .recharts-tooltip-label {

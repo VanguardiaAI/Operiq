@@ -133,7 +133,7 @@ export default function ReportsPage() {
   const [selectedReport, setSelectedReport] = useState<string | null>(null);
 
   return (
-    <div className="space-y-4 sm:space-y-6 px-2 sm:px-0">
+    <div className="space-y-4 sm:space-y-6 px-4 sm:px-6 lg:px-8">
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex gap-2 overflow-x-auto pb-2 sm:pb-0">
@@ -144,8 +144,8 @@ export default function ReportsPage() {
               size="sm"
               onClick={() => setSelectedPeriod(period)}
               className={selectedPeriod === period
-                ? 'bg-white text-black hover:bg-gray-100'
-                : 'bg-transparent border-zinc-800 text-zinc-400 hover:bg-zinc-900/50 hover:text-white'}
+                ? 'bg-yellow-500 hover:bg-yellow-600 text-black font-semibold'
+                : 'bg-[#232c43] border-0 text-white hover:bg-[#232c43]/80'}
             >
               {period === 'week' && 'Semana'}
               {period === 'month' && 'Mes'}
@@ -155,11 +155,11 @@ export default function ReportsPage() {
           ))}
         </div>
         <div className="flex items-center gap-2 sm:gap-3">
-          <Button variant="outline" size="sm" className="bg-transparent border-zinc-800 text-zinc-400 hover:bg-zinc-900/50 hover:text-white">
+          <Button variant="outline" size="sm" className="bg-[#232c43] border-0 text-white hover:bg-[#232c43]/80">
             <Calendar className="h-4 w-4 mr-1 sm:mr-2" />
             Último mes
           </Button>
-          <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+          <Button className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold">
             <Download className="h-4 w-4 mr-1 sm:mr-2" />
             <span className="hidden sm:inline">Exportar Todo</span>
             <span className="sm:hidden">Exportar</span>
@@ -174,8 +174,8 @@ export default function ReportsPage() {
           return (
             <div 
               key={report.id} 
-              className={`bg-zinc-950 border rounded-lg cursor-pointer transition-all hover:border-zinc-700 p-4 sm:p-6 ${
-                selectedReport === report.id ? 'border-blue-500' : 'border-zinc-800'
+              className={`bg-black border rounded-lg cursor-pointer transition-all hover:border-zinc-700 shadow-xl hover:shadow-2xl duration-200 p-4 sm:p-6 ${
+                selectedReport === report.id ? 'border-yellow-500' : 'border-zinc-900/50'
               }`}
               onClick={() => setSelectedReport(report.id)}
             >
@@ -190,7 +190,7 @@ export default function ReportsPage() {
                 <Button 
                   size="sm" 
                   variant="outline"
-                  className="w-full bg-transparent border-zinc-800 text-zinc-400 hover:bg-zinc-900/50 hover:text-white"
+                  className="w-full bg-[#232c43] border-0 text-white hover:bg-[#232c43]/80"
                 >
                   Generar
                   <ChevronRight className="h-3 w-3 ml-1" />
@@ -204,9 +204,9 @@ export default function ReportsPage() {
       {/* Charts */}
       <div className="grid gap-4 sm:gap-6 grid-cols-1 lg:grid-cols-2">
         {/* Performance Chart */}
-        <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-4 sm:p-6">
+        <div className="bg-black border border-zinc-900/50 shadow-xl hover:shadow-2xl transition-shadow duration-200 rounded-lg p-4 sm:p-6">
           <h3 className="text-lg font-semibold text-white">Rendimiento General</h3>
-          <p className="text-sm text-zinc-400 mt-1">Evolución de métricas clave</p>
+          <p className="text-sm text-zinc-500 mt-1">Evolución de métricas clave</p>
           <ResponsiveContainer width="100%" height={256} className="mt-4">
             <LineChart data={performanceData}>
               <CartesianGrid strokeDasharray="3 3" stroke="#27272a" />
@@ -257,9 +257,9 @@ export default function ReportsPage() {
         </div>
 
         {/* Platform Comparison */}
-        <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-4 sm:p-6">
+        <div className="bg-black border border-zinc-900/50 shadow-xl hover:shadow-2xl transition-shadow duration-200 rounded-lg p-4 sm:p-6">
           <h3 className="text-lg font-semibold text-white">Comparativa de Plataformas</h3>
-          <p className="text-sm text-zinc-400 mt-1">Rendimiento por plataforma</p>
+          <p className="text-sm text-zinc-500 mt-1">Rendimiento por plataforma</p>
           <ResponsiveContainer width="100%" height={256} className="mt-4">
             <BarChart data={platformComparison}>
               <CartesianGrid strokeDasharray="3 3" stroke="#27272a" />
@@ -304,9 +304,9 @@ export default function ReportsPage() {
       </div>
 
       {/* Efficiency Distribution */}
-      <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-4 sm:p-6">
+      <div className="bg-black border border-zinc-900/50 shadow-xl hover:shadow-2xl transition-shadow duration-200 rounded-lg p-4 sm:p-6">
         <h3 className="text-lg font-semibold text-white">Distribución de Eficiencia</h3>
-        <p className="text-sm text-zinc-400 mt-1">Conductores por nivel de rendimiento</p>
+        <p className="text-sm text-zinc-500 mt-1">Conductores por nivel de rendimiento</p>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mt-4">
           <ResponsiveContainer width="100%" height={256}>
             <PieChart>
@@ -346,7 +346,7 @@ export default function ReportsPage() {
                       className="w-3 h-3 rounded-full" 
                       style={{ backgroundColor: colors[index] }}
                     />
-                    <span className="text-sm text-zinc-400">{item.name}</span>
+                    <span className="text-sm text-zinc-500">{item.name}</span>
                   </div>
                   <span className="text-sm text-white font-medium">{item.value}%</span>
                 </div>
@@ -357,13 +357,13 @@ export default function ReportsPage() {
       </div>
 
       {/* Recent Reports */}
-      <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-4 sm:p-6">
+      <div className="bg-black border border-zinc-900/50 shadow-xl hover:shadow-2xl transition-shadow duration-200 rounded-lg p-4 sm:p-6">
         <div className="flex justify-between items-start mb-4">
           <div>
             <h3 className="text-lg font-semibold text-white">Informes Recientes</h3>
-            <p className="text-sm text-zinc-400 mt-1">Últimos informes generados</p>
+            <p className="text-sm text-zinc-500 mt-1">Últimos informes generados</p>
           </div>
-          <Button variant="outline" size="sm" className="bg-transparent border-zinc-800 text-zinc-400 hover:bg-zinc-900/50 hover:text-white">
+          <Button variant="outline" size="sm" className="bg-[#232c43] border-0 text-white hover:bg-[#232c43]/80">
             Ver todos
           </Button>
         </div>
@@ -406,7 +406,7 @@ export default function ReportsPage() {
                 <Button 
                   size="sm" 
                   variant="outline"
-                  className="bg-transparent border-zinc-800 text-zinc-400 hover:bg-zinc-900/50 hover:text-white"
+                  className="bg-[#232c43] border-0 text-white hover:bg-[#232c43]/80"
                   disabled={report.status !== 'completed'}
                 >
                   <Download className="h-4 w-4" />

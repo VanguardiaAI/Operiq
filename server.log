@@ -1,0 +1,1093 @@
+
+> operiq-dashboard@0.1.0 dev
+> next dev --turbopack
+
+   ▲ Next.js 15.4.5 (Turbopack)
+   - Local:        http://localhost:3001
+   - Network:      http://192.168.1.102:3001
+   - Environments: .env.local
+   - Experiments (use with caution):
+     · serverActions
+
+ ✓ Starting...
+ ✓ Compiled middleware in 73ms
+ ✓ Ready in 937ms
+ ○ Compiling /dashboard/vehicles ...
+ ✓ Compiled /dashboard/vehicles in 1537ms
+ GET /dashboard/vehicles 200 in 1951ms
+ ⚠ The "images.domains" configuration is deprecated. Please use "images.remotePatterns" configuration instead.
+ ✓ Compiled /favicon.ico in 198ms
+(node:66120) [MONGOOSE] Warning: Duplicate schema index on {"uuid":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:66120) [MONGOOSE] Warning: Duplicate schema index on {"driverUuid":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 572ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 240ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 2424ms
+Configuring Bolt API: {
+  clientIdExists: true,
+  clientSecretExists: true,
+  clientIdLength: 21,
+  clientSecretLength: 86
+}
+Bolt API credentials configured successfully
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/getVehicles
+Method: POST
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/getVehicles
+Bolt API error: TypeError: Cannot read properties of undefined (reading 'vehicles')
+    at BoltService.getVehicles (services/bolt/boltService.ts:140:27)
+    at async SyncService.syncVehicles (services/syncService.ts:25:23)
+    at async GET (app/api/vehicles/route.ts:128:25)
+  138 |       });
+  139 |
+> 140 |       return response.data.vehicles;
+      |                           ^
+  141 |     } catch (error: any) {
+  142 |       this.handleError(error);
+  143 |       throw error;
+Error fetching vehicles from Bolt: TypeError: Cannot read properties of undefined (reading 'vehicles')
+    at BoltService.getVehicles (services/bolt/boltService.ts:140:27)
+    at async SyncService.syncVehicles (services/syncService.ts:25:23)
+    at async GET (app/api/vehicles/route.ts:128:25)
+  138 |       });
+  139 |
+> 140 |       return response.data.vehicles;
+      |                           ^
+  141 |     } catch (error: any) {
+  142 |       this.handleError(error);
+  143 |       throw error;
+Sync error (non-fatal): TypeError: Cannot read properties of undefined (reading 'vehicles')
+    at BoltService.getVehicles (services/bolt/boltService.ts:140:27)
+    at async SyncService.syncVehicles (services/syncService.ts:25:23)
+    at async GET (app/api/vehicles/route.ts:128:25)
+  138 |       });
+  139 |
+> 140 |       return response.data.vehicles;
+      |                           ^
+  141 |     } catch (error: any) {
+  142 |       this.handleError(error);
+  143 |       throw error;
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=true 200 in 1146ms
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/getVehicles
+Method: POST
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/getVehicles
+Bolt API error: TypeError: Cannot read properties of undefined (reading 'vehicles')
+    at BoltService.getVehicles (services/bolt/boltService.ts:140:27)
+    at async SyncService.syncVehicles (services/syncService.ts:25:23)
+    at async GET (app/api/vehicles/route.ts:128:25)
+  138 |       });
+  139 |
+> 140 |       return response.data.vehicles;
+      |                           ^
+  141 |     } catch (error: any) {
+  142 |       this.handleError(error);
+  143 |       throw error;
+Error fetching vehicles from Bolt: TypeError: Cannot read properties of undefined (reading 'vehicles')
+    at BoltService.getVehicles (services/bolt/boltService.ts:140:27)
+    at async SyncService.syncVehicles (services/syncService.ts:25:23)
+    at async GET (app/api/vehicles/route.ts:128:25)
+  138 |       });
+  139 |
+> 140 |       return response.data.vehicles;
+      |                           ^
+  141 |     } catch (error: any) {
+  142 |       this.handleError(error);
+  143 |       throw error;
+Sync error (non-fatal): TypeError: Cannot read properties of undefined (reading 'vehicles')
+    at BoltService.getVehicles (services/bolt/boltService.ts:140:27)
+    at async SyncService.syncVehicles (services/syncService.ts:25:23)
+    at async GET (app/api/vehicles/route.ts:128:25)
+  138 |       });
+  139 |
+> 140 |       return response.data.vehicles;
+      |                           ^
+  141 |     } catch (error: any) {
+  142 |       this.handleError(error);
+  143 |       throw error;
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=true 200 in 816ms
+ ○ Compiling /dashboard ...
+ ✓ Compiled /dashboard in 656ms
+ GET /dashboard 200 in 682ms
+ ✓ Compiled /dashboard/fraud-alerts in 321ms
+ GET /dashboard/fraud-alerts 200 in 349ms
+ ✓ Compiled /dashboard/reports in 369ms
+ GET /dashboard/reports 200 in 392ms
+ GET /dashboard 200 in 47ms
+ ✓ Compiled /dashboard/platforms in 196ms
+ GET /dashboard/platforms 200 in 230ms
+ ✓ Compiled /api/drivers in 60ms
+ GET /api/vehicles?limit=1 200 in 139ms
+ GET /api/vehicles?limit=1 200 in 111ms
+ GET /api/drivers?limit=1 200 in 813ms
+ ✓ Compiled /api/bolt/test in 55ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+ GET /api/drivers?limit=1 200 in 130ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 276ms
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 500ms
+ GET /dashboard/vehicles 200 in 78ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 122ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 122ms
+ ✓ Compiled /dashboard/drivers in 200ms
+ GET /dashboard/drivers 200 in 217ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 115ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 112ms
+ GET /dashboard/vehicles 200 in 41ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 121ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 121ms
+ ✓ Compiled middleware in 2ms
+ GET /dashboard/vehicles 200 in 103ms
+ GET /dashboard/vehicles 200 in 28ms
+ ✓ Compiled /api/test/bolt-response in 77ms
+Configuring Bolt API: {
+  clientIdExists: true,
+  clientSecretExists: true,
+  clientIdLength: 21,
+  clientSecretLength: 86
+}
+Bolt API credentials configured successfully
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/getVehicles
+Method: POST
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/getVehicles
+ GET /api/test/bolt-response 200 in 699ms
+ ✓ Compiled in 102ms
+ GET /dashboard/platforms 200 in 117ms
+(node:66120) [MONGOOSE] Warning: Duplicate schema index on {"driverUuid":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(node:66120) [MONGOOSE] Warning: Duplicate schema index on {"uuid":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+ GET /api/drivers?limit=1 200 in 148ms
+ GET /api/vehicles?limit=1 200 in 160ms
+Configuring Bolt API: {
+  clientIdExists: true,
+  clientSecretExists: true,
+  clientIdLength: 21,
+  clientSecretLength: 86
+}
+Bolt API credentials configured successfully
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+ GET /api/drivers?limit=1 200 in 120ms
+ GET /api/vehicles?limit=1 200 in 118ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 505ms
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 487ms
+Configuring Bolt API: {
+  clientIdExists: true,
+  clientSecretExists: true,
+  clientIdLength: 21,
+  clientSecretLength: 86
+}
+Bolt API credentials configured successfully
+(node:66120) [MONGOOSE] Warning: Duplicate schema index on {"uuid":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(node:66120) [MONGOOSE] Warning: Duplicate schema index on {"driverUuid":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/getVehicles
+Method: POST
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/getVehicles
+Sync result: { synced: 0, errors: 0 }
+ GET /api/vehicles?sync=true 200 in 606ms
+ ✓ Compiled middleware in 3ms
+ GET /dashboard/platforms 200 in 88ms
+ GET /dashboard/platforms 200 in 19ms
+ ✓ Compiled /api/test/check-db in 188ms
+(node:66120) [MONGOOSE] Warning: Duplicate schema index on {"uuid":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(node:66120) [MONGOOSE] Warning: Duplicate schema index on {"driverUuid":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+ GET /api/test/check-db 200 in 673ms
+ ✓ Compiled in 72ms
+ ✓ Compiled middleware in 3ms
+ GET /dashboard/platforms 200 in 96ms
+ GET /dashboard/platforms 200 in 22ms
+ ✓ Compiled in 99ms
+ ✓ Compiled /api/test/sync-debug in 58ms
+Configuring Bolt API: {
+  clientIdExists: true,
+  clientSecretExists: true,
+  clientIdLength: 21,
+  clientSecretLength: 86
+}
+Bolt API credentials configured successfully
+(node:66120) [MONGOOSE] Warning: Duplicate schema index on {"uuid":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(node:66120) [MONGOOSE] Warning: Duplicate schema index on {"driverUuid":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/getVehicles
+Method: POST
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/getVehicles
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/getDrivers
+Method: POST
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/getDrivers
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/getVehicles
+Method: POST
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/getVehicles
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/getDrivers
+Method: POST
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/getDrivers
+ GET /api/test/sync-debug 200 in 2273ms
+ ✓ Compiled in 95ms
+ GET /api/test/check-db 200 in 433ms
+ GET /dashboard/drivers 200 in 258ms
+(node:66120) [MONGOOSE] Warning: Duplicate schema index on {"driverUuid":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(node:66120) [MONGOOSE] Warning: Duplicate schema index on {"uuid":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 173ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 261ms
+ ✓ Compiled middleware in 2ms
+ GET /dashboard/platforms 200 in 246ms
+ GET /dashboard/drivers 200 in 246ms
+ GET /dashboard/drivers 200 in 247ms
+ GET /dashboard/platforms 200 in 42ms
+(node:66120) [MONGOOSE] Warning: Duplicate schema index on {"driverUuid":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(node:66120) [MONGOOSE] Warning: Duplicate schema index on {"uuid":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 139ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 241ms
+ GET /favicon.ico 200 in 248ms
+ ✓ Compiled /api/test/vehicles-range in 118ms
+Configuring Bolt API: {
+  clientIdExists: true,
+  clientSecretExists: true,
+  clientIdLength: 21,
+  clientSecretLength: 86
+}
+Bolt API credentials configured successfully
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/getVehicles
+Method: POST
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/getVehicles
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/getVehicles
+Method: POST
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/getVehicles
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/getVehicles
+Method: POST
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/getVehicles
+ GET /api/test/vehicles-range 200 in 1182ms
+Configuring Bolt API: {
+  clientIdExists: true,
+  clientSecretExists: true,
+  clientIdLength: 21,
+  clientSecretLength: 86
+}
+Bolt API credentials configured successfully
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/getVehicles
+Method: POST
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/getVehicles
+Sync result: { synced: 0, errors: 0 }
+ GET /api/vehicles?sync=true 200 in 348ms
+ GET /dashboard 200 in 39ms
+ ✓ Compiled middleware in 8ms
+ GET /dashboard/drivers 200 in 238ms
+ GET /dashboard 200 in 240ms
+ GET /dashboard/drivers 200 in 242ms
+ GET /dashboard 200 in 41ms
+(node:66120) [MONGOOSE] Warning: Duplicate schema index on {"driverUuid":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(node:66120) [MONGOOSE] Warning: Duplicate schema index on {"uuid":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 243ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 144ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 237ms
+ ✓ Compiled /api/test/sync-vehicles-manual in 94ms
+Configuring Bolt API: {
+  clientIdExists: true,
+  clientSecretExists: true,
+  clientIdLength: 21,
+  clientSecretLength: 86
+}
+Bolt API credentials configured successfully
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/getVehicles
+Method: POST
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/getVehicles
+Found vehicles: [
+  {
+    id: 7153048,
+    model: 'Ford Mondeo',
+    year: 2019,
+    reg_number: '2771-KTD',
+    uuid: 'f25d621b-dca1-4692-9c1b-cca063bbcc38',
+    state: 'active'
+  }
+]
+ GET /api/test/sync-vehicles-manual 200 in 1033ms
+ GET /dashboard/platforms 200 in 55ms
+ GET /api/drivers?limit=1 200 in 161ms
+ GET /api/vehicles?limit=1 200 in 162ms
+Configuring Bolt API: {
+  clientIdExists: true,
+  clientSecretExists: true,
+  clientIdLength: 21,
+  clientSecretLength: 86
+}
+Bolt API credentials configured successfully
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+ GET /api/vehicles?limit=1 200 in 123ms
+ GET /api/drivers?limit=1 200 in 128ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 638ms
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 512ms
+ GET /dashboard/vehicles 200 in 138ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 128ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 225ms
+ GET /dashboard/platforms 200 in 39ms
+ GET /api/drivers?limit=1 200 in 115ms
+ GET /api/vehicles?limit=1 200 in 122ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+ GET /api/vehicles?limit=1 200 in 151ms
+ GET /api/drivers?limit=1 200 in 155ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 328ms
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 301ms
+ GET /api/vehicles 200 in 114ms
+ GET /api/drivers 200 in 135ms
+ GET /dashboard/vehicles 200 in 51ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 120ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 119ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 114ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /dashboard/drivers 200 in 110ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 127ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 388ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 240ms
+ GET /dashboard/drivers 200 in 58ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 134ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 131ms
+ GET /dashboard/drivers 200 in 124ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 139ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 290ms
+ GET /favicon.ico 200 in 241ms
+ GET /favicon.ico 200 in 228ms
+ GET /dashboard/vehicles 200 in 96ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 121ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 233ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 237ms
+ ✓ Compiled /dashboard/finance in 436ms
+ GET /dashboard/finance 200 in 485ms
+ GET /dashboard/drivers 200 in 27ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 120ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 230ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 111ms
+ GET /api/drivers 200 in 187ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 209ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /dashboard/drivers 200 in 106ms
+ GET /dashboard/drivers 200 in 90ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 121ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 230ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 232ms
+ GET /favicon.ico 200 in 234ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 139ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 343ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 173ms
+ GET /dashboard/drivers 200 in 292ms
+ GET /dashboard/drivers 200 in 111ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 148ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 226ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 124ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 261ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 414ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 226ms
+ ✓ Compiled in 62ms
+ ✓ Compiled in 45ms
+ ✓ Compiled in 51ms
+ ✓ Compiled in 101ms
+ GET /dashboard/drivers 200 in 248ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 117ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 226ms
+ GET /api/drivers?limit=3 200 in 147ms
+ GET /api/drivers?page=1&limit=10&state=active&search=&sync=false 200 in 116ms
+ GET /dashboard 200 in 99ms
+ GET /dashboard 200 in 58ms
+ GET /dashboard/platforms 200 in 112ms
+ GET /api/drivers?limit=1 200 in 142ms
+ GET /api/vehicles?limit=1 200 in 145ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+ GET /api/vehicles?limit=1 200 in 122ms
+ GET /api/drivers?limit=1 200 in 127ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 402ms
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 306ms
+ ✓ Compiled in 109ms
+ ✓ Compiled in 116ms
+ GET /dashboard/drivers 200 in 260ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 143ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 237ms
+ GET /dashboard/vehicles 200 in 64ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 115ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 121ms
+ GET /dashboard/platforms 200 in 44ms
+ GET /api/drivers?limit=1 200 in 127ms
+ GET /api/vehicles?limit=1 200 in 132ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+ GET /api/vehicles?limit=1 200 in 121ms
+ GET /api/drivers?limit=1 200 in 124ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 309ms
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 294ms
+ ✓ Compiled in 110ms
+ GET /api/drivers?limit=1&state=suspended 200 in 189ms
+ GET /dashboard/drivers 200 in 131ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 147ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 123ms
+ ✓ Compiled in 88ms
+ GET /dashboard/vehicles 200 in 72ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 117ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 146ms
+ GET /dashboard/vehicles 200 in 42ms
+ GET /dashboard/platforms 200 in 48ms
+ GET /api/vehicles?limit=1 200 in 119ms
+ GET /api/drivers?limit=1 200 in 122ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+ GET /api/vehicles?limit=1 200 in 129ms
+ GET /api/drivers?limit=1 200 in 128ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 351ms
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 263ms
+ ✓ Compiled in 134ms
+ ✓ Compiled in 79ms
+ GET /dashboard/vehicles 200 in 79ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 126ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 128ms
+ GET /dashboard/drivers 200 in 144ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 157ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 126ms
+ GET /dashboard/finance 200 in 55ms
+ ✓ Compiled in 100ms
+ GET /dashboard 200 in 62ms
+ GET /dashboard/platforms 200 in 143ms
+ GET /api/vehicles?limit=1 200 in 168ms
+ GET /api/drivers?limit=1 200 in 197ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+ GET /api/vehicles?limit=1 200 in 112ms
+ GET /api/drivers?limit=1 200 in 121ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 558ms
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 524ms
+ GET /dashboard 200 in 40ms
+ GET /dashboard/platforms 200 in 46ms
+ GET /api/drivers?limit=1 200 in 125ms
+ GET /api/vehicles?limit=1 200 in 127ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+ GET /api/vehicles?limit=1 200 in 127ms
+ GET /api/drivers?limit=1 200 in 132ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 271ms
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 586ms
+ GET /dashboard 200 in 46ms
+ GET /dashboard/platforms 200 in 35ms
+ GET /api/drivers?limit=1 200 in 146ms
+ GET /api/vehicles?limit=1 200 in 149ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+ GET /api/vehicles?limit=1 200 in 124ms
+ GET /api/drivers?limit=1 200 in 124ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 271ms
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 296ms
+ ✓ Compiled in 139ms
+ ✓ Compiled in 96ms
+ GET /dashboard 200 in 84ms
+ GET /dashboard/finance 200 in 73ms
+ GET /dashboard 200 in 64ms
+ GET /dashboard/finance 200 in 55ms
+ GET /dashboard 200 in 74ms
+ GET /dashboard/platforms 200 in 130ms
+ GET /api/drivers?limit=1 200 in 179ms
+ GET /api/vehicles?limit=1 200 in 182ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+ GET /api/drivers?limit=1 200 in 129ms
+ GET /api/vehicles?limit=1 200 in 130ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 338ms
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 270ms
+ GET /dashboard 200 in 51ms
+ GET /dashboard/platforms 200 in 63ms
+ GET /api/vehicles?limit=1 200 in 137ms
+ GET /api/drivers?limit=1 200 in 139ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+ GET /api/vehicles?limit=1 200 in 130ms
+ GET /api/drivers?limit=1 200 in 133ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 295ms
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 652ms
+ GET /dashboard 200 in 57ms
+ ✓ Compiled in 164ms
+ ✓ Compiled in 157ms
+ ✓ Compiled in 291ms
+ ✓ Compiled in 116ms
+ ✓ Compiled in 114ms
+ GET /dashboard/vehicles 200 in 374ms
+ GET /favicon.ico?favicon.45db1c09.ico 500 in 26ms
+ GET /favicon.ico?favicon.45db1c09.ico 500 in 46ms
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 1328ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 500 in 1493ms
+ ✓ Compiled in 103ms
+ ✓ Compiled in 146ms
+ ✓ Compiled in 142ms
+ GET /dashboard/drivers 200 in 183ms
+ GET /dashboard/platforms 200 in 193ms
+ GET /dashboard/vehicles 200 in 188ms
+ ✓ Compiled /dashboard in 64ms
+ GET /dashboard 200 in 131ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 247ms
+ GET /dashboard/vehicles 200 in 68ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 163ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 133ms
+ ✓ Compiled in 115ms
+ GET /dashboard/drivers 200 in 58ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 120ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 135ms
+ GET /dashboard/finance 200 in 99ms
+ GET /dashboard/drivers 200 in 48ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 126ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 122ms
+ GET /dashboard 200 in 125ms
+ ✓ Compiled in 118ms
+ ✓ Compiled in 175ms
+ ✓ Compiled in 101ms
+ ✓ Compiled in 75ms
+ ✓ Compiled in 92ms
+ ✓ Compiled in 144ms
+ ✓ Compiled in 57ms
+ GET /dashboard/finance 200 in 80ms
+ GET /dashboard 200 in 111ms
+ ✓ Compiled in 85ms
+ GET /dashboard/platforms 200 in 76ms
+ GET /api/vehicles?limit=1 200 in 144ms
+ GET /api/drivers?limit=1 200 in 153ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+ GET /api/vehicles?limit=1 200 in 147ms
+ GET /api/drivers?limit=1 200 in 137ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 546ms
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 699ms
+ ✓ Compiled in 99ms
+ GET /dashboard/vehicles 200 in 52ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 120ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 124ms
+ GET /dashboard/drivers 200 in 49ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 127ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 128ms
+ GET /dashboard/finance 200 in 48ms
+ GET /dashboard/fraud-alerts 200 in 105ms
+ GET /dashboard/reports 200 in 92ms
+ ✓ Compiled /dashboard/settings in 342ms
+ GET /dashboard/settings 200 in 371ms
+ GET /dashboard 200 in 140ms
+ ✓ Compiled in 174ms
+ ✓ Compiled in 141ms
+ ✓ Compiled in 52ms
+ ✓ Compiled in 155ms
+ ✓ Compiled in 144ms
+ ✓ Compiled in 100ms
+ ✓ Compiled in 175ms
+ ✓ Compiled in 140ms
+ GET /dashboard 200 in 215ms
+ GET /dashboard/platforms 200 in 140ms
+ GET /api/drivers?limit=1 200 in 132ms
+ GET /api/vehicles?limit=1 200 in 135ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+ GET /api/vehicles?limit=1 200 in 129ms
+ GET /api/drivers?limit=1 200 in 132ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 314ms
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 754ms
+ GET /dashboard/vehicles 200 in 91ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 117ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 114ms
+ GET /dashboard/drivers 200 in 146ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 137ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 129ms
+ ✓ Compiled in 175ms
+ GET /dashboard/finance 200 in 94ms
+ GET /dashboard/fraud-alerts 200 in 119ms
+ GET /dashboard/reports 200 in 95ms
+ GET /dashboard/vehicles 200 in 53ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 123ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 129ms
+ GET /dashboard 200 in 54ms
+ GET /dashboard/finance 200 in 74ms
+ GET /dashboard 200 in 74ms
+ ✓ Compiled in 1202ms
+ ✓ Compiled /dashboard in 56ms
+ ⨯ ReferenceError: geistSans is not defined
+    at RootLayout (app/layout.tsx:54:26)
+  52 |   return (
+  53 |     <html lang="es" className="dark">
+> 54 |       <body className={`${geistSans.variable} ${geistMono.variable} antialiased dark bg-black`}>
+     |                          ^
+  55 |         {children}
+  56 |         <Toaster />
+  57 |       </body> {
+  digest: '3913659862'
+}
+ ⨯ ReferenceError: geistSans is not defined
+    at RootLayout (app/layout.tsx:54:26)
+  52 |   return (
+  53 |     <html lang="es" className="dark">
+> 54 |       <body className={`${geistSans.variable} ${geistMono.variable} antialiased dark bg-black`}>
+     |                          ^
+  55 |         {children}
+  56 |         <Toaster />
+  57 |       </body> {
+  digest: '3913659862'
+}
+ ⨯ ReferenceError: geistSans is not defined
+    at RootLayout (app/layout.tsx:54:26)
+  52 |   return (
+  53 |     <html lang="es" className="dark">
+> 54 |       <body className={`${geistSans.variable} ${geistMono.variable} antialiased dark bg-black`}>
+     |                          ^
+  55 |         {children}
+  56 |         <Toaster />
+  57 |       </body> {
+  digest: '3913659862'
+}
+ GET /dashboard/vehicles 200 in 953ms
+ GET /dashboard 200 in 963ms
+ ⨯ ReferenceError: geistSans is not defined
+    at RootLayout (app/layout.tsx:54:26)
+  52 |   return (
+  53 |     <html lang="es" className="dark">
+> 54 |       <body className={`${geistSans.variable} ${geistMono.variable} antialiased dark bg-black`}>
+     |                          ^
+  55 |         {children}
+  56 |         <Toaster />
+  57 |       </body> {
+  digest: '3913659862'
+}
+ ⨯ ReferenceError: geistSans is not defined
+    at RootLayout (app/layout.tsx:54:26)
+  52 |   return (
+  53 |     <html lang="es" className="dark">
+> 54 |       <body className={`${geistSans.variable} ${geistMono.variable} antialiased dark bg-black`}>
+     |                          ^
+  55 |         {children}
+  56 |         <Toaster />
+  57 |       </body> {
+  digest: '3913659862'
+}
+ GET /dashboard 500 in 516ms
+ GET /dashboard/vehicles 500 in 518ms
+ ⨯ ReferenceError: geistSans is not defined
+    at RootLayout (app/layout.tsx:54:26)
+  52 |   return (
+  53 |     <html lang="es" className="dark">
+> 54 |       <body className={`${geistSans.variable} ${geistMono.variable} antialiased dark bg-black`}>
+     |                          ^
+  55 |         {children}
+  56 |         <Toaster />
+  57 |       </body> {
+  digest: '3913659862'
+}
+ ⨯ ReferenceError: geistSans is not defined
+    at RootLayout (app/layout.tsx:54:26)
+  52 |   return (
+  53 |     <html lang="es" className="dark">
+> 54 |       <body className={`${geistSans.variable} ${geistMono.variable} antialiased dark bg-black`}>
+     |                          ^
+  55 |         {children}
+  56 |         <Toaster />
+  57 |       </body> {
+  digest: '3913659862'
+}
+ ⨯ ReferenceError: geistSans is not defined
+    at RootLayout (app/layout.tsx:54:26)
+  52 |   return (
+  53 |     <html lang="es" className="dark">
+> 54 |       <body className={`${geistSans.variable} ${geistMono.variable} antialiased dark bg-black`}>
+     |                          ^
+  55 |         {children}
+  56 |         <Toaster />
+  57 |       </body> {
+  digest: '3913659862'
+}
+ GET /dashboard 200 in 280ms
+ ⨯ ReferenceError: geistSans is not defined
+    at RootLayout (app/layout.tsx:54:26)
+  52 |   return (
+  53 |     <html lang="es" className="dark">
+> 54 |       <body className={`${geistSans.variable} ${geistMono.variable} antialiased dark bg-black`}>
+     |                          ^
+  55 |         {children}
+  56 |         <Toaster />
+  57 |       </body> {
+  digest: '3913659862'
+}
+ GET /dashboard 500 in 267ms
+ ⨯ ReferenceError: geistSans is not defined
+    at RootLayout (app/layout.tsx:54:26)
+  52 |   return (
+  53 |     <html lang="es" className="dark">
+> 54 |       <body className={`${geistSans.variable} ${geistMono.variable} antialiased dark bg-black`}>
+     |                          ^
+  55 |         {children}
+  56 |         <Toaster />
+  57 |       </body> {
+  digest: '3913659862'
+}
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 364ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 268ms
+ GET /favicon.ico 200 in 272ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 453ms
+ GET /favicon.ico 200 in 445ms
+ GET /favicon.ico 200 in 230ms
+ ✓ Compiled in 150ms
+ ✓ Compiled /dashboard in 23ms
+ ⨯ ReferenceError: geistSans is not defined
+    at RootLayout (app/layout.tsx:54:26)
+  52 |   return (
+  53 |     <html lang="es" className="dark">
+> 54 |       <body className={`${helixaRegular.variable} ${helixaBold.variable} ${helixaLight.variable} ${helixaBook.variable} ${helixaBlack.variable} ${helixaThin.variable} antialiased dark bg-black`}>
+     |                          ^
+  55 |         {children}
+  56 |         <Toaster />
+  57 |       </body> {
+  digest: '3913659862'
+}
+Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+ ⨯ TypeError: Cannot read properties of null (reading 'useContext')
+    at Toaster (components/ui/sonner.tsx:7:38)
+   5 |
+   6 | const Toaster = ({ ...props }: ToasterProps) => {
+>  7 |   const { theme = "system" } = useTheme()
+     |                                      ^
+   8 |
+   9 |   return (
+  10 |     <Sonner {
+  digest: '2853458932'
+}
+ GET /dashboard/vehicles 500 in 320ms
+ GET /dashboard 500 in 333ms
+ GET /dashboard 200 in 223ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 631ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 245ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 278ms
+ GET /favicon.ico 200 in 302ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 236ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 235ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 207ms
+ ✓ Compiled /_not-found/page in 172ms
+ GET /dashboard/vehicles 404 in 235ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 230ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 250ms
+ ✓ Compiled in 599ms
+ ⨯ ReferenceError: geistSans is not defined
+    at RootLayout (app/layout.tsx:54:26)
+  52 |   return (
+  53 |     <html lang="es" className="dark">
+> 54 |       <body className={`${helixaRegular.variable} ${helixaBold.variable} ${helixaLight.variable} ${helixaBook.variable} ${helixaBlack.variable} ${helixaThin.variable} antialiased dark bg-black`}>
+     |                          ^
+  55 |         {children}
+  56 |         <Toaster />
+  57 |       </body> {
+  digest: '3913659862'
+}
+ GET /dashboard/vehicles 500 in 120ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 266ms
+ GET /favicon.ico 200 in 250ms
+ GET /dashboard 200 in 226ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 251ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 256ms
+ ✓ Compiled /dashboard/platforms in 59ms
+ GET /dashboard/platforms 200 in 137ms
+ GET /api/vehicles?limit=1 200 in 137ms
+ GET /api/drivers?limit=1 200 in 140ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+ GET /api/vehicles?limit=1 200 in 167ms
+ GET /api/drivers?limit=1 200 in 169ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 960ms
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 911ms
+ GET /dashboard/vehicles 200 in 49ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 125ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 123ms
+ ✓ Compiled /dashboard/drivers in 37ms
+ GET /dashboard/drivers 200 in 117ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 170ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 128ms
+ ✓ Compiled /dashboard/finance in 40ms
+ GET /dashboard/finance 200 in 103ms
+ ✓ Compiled /dashboard/fraud-alerts in 29ms
+ GET /dashboard/fraud-alerts 200 in 88ms
+ ✓ Compiled /dashboard/reports in 34ms
+ GET /dashboard/reports 200 in 110ms
+ ✓ Compiled /dashboard/settings in 41ms
+ GET /dashboard/settings 200 in 173ms
+ GET /dashboard/vehicles 200 in 58ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 126ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 133ms
+ GET /dashboard 200 in 61ms
+ GET /dashboard/platforms 200 in 52ms
+ GET /api/vehicles?limit=1 200 in 130ms
+ GET /api/drivers?limit=1 200 in 135ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+ GET /api/vehicles?limit=1 200 in 142ms
+ GET /api/drivers?limit=1 200 in 142ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 282ms
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 699ms
+ ✓ Compiled in 606ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⨯ ReferenceError: geistSans is not defined
+    at RootLayout (app/layout.tsx:54:26)
+  52 |   return (
+  53 |     <html lang="es" className="dark">
+> 54 |       <body className={`${helixaRegular.variable} ${helixaBold.variable} ${helixaLight.variable} ${helixaBook.variable} ${helixaBlack.variable} ${helixaThin.variable} antialiased dark bg-black`}>
+     |                          ^
+  55 |         {children}
+  56 |         <Toaster />
+  57 |       </body> {
+  digest: '3913659862'
+}
+ GET /dashboard/vehicles 500 in 283ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 298ms
+ GET /favicon.ico 200 in 240ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 137ms
+ ⨯ ReferenceError: geistSans is not defined
+    at RootLayout (app/layout.tsx:54:26)
+  52 |   return (
+  53 |     <html lang="es" className="dark">
+> 54 |       <body className={`${helixaRegular.variable} ${helixaBold.variable} ${helixaLight.variable} ${helixaBook.variable} ${helixaBlack.variable} ${helixaThin.variable} antialiased dark bg-black`}>
+     |                          ^
+  55 |         {children}
+  56 |         <Toaster />
+  57 |       </body> {
+  digest: '3913659862'
+}
+ GET /dashboard/vehicles 500 in 138ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 259ms
+ GET /favicon.ico 200 in 300ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 115ms
+ ⨯ ReferenceError: geistSans is not defined
+    at RootLayout (app/layout.tsx:54:26)
+  52 |   return (
+  53 |     <html lang="es" className="dark">
+> 54 |       <body className={`${helixaRegular.variable} ${helixaBold.variable} ${helixaLight.variable} ${helixaBook.variable} ${helixaBlack.variable} ${helixaThin.variable} antialiased dark bg-black`}>
+     |                          ^
+  55 |         {children}
+  56 |         <Toaster />
+  57 |       </body> {
+  digest: '3913659862'
+}
+ GET /dashboard/vehicles 500 in 132ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 252ms
+ GET /favicon.ico 200 in 248ms
+ GET /dashboard/platforms 200 in 324ms
+ GET /api/vehicles?limit=1 200 in 146ms
+ GET /api/drivers?limit=1 200 in 148ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 229ms
+Test endpoint - Bolt configured: true
+Test endpoint - Env vars: { clientId: 'Set', clientSecret: 'Set' }
+Making request to: https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+Method: POST
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 233ms
+Response received from https://node.bolt.eu/fleet-integration-gateway/fleetIntegration/v1/test
+ POST /api/bolt/test 200 in 365ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 135ms
+ ⨯ ReferenceError: geistSans is not defined
+    at RootLayout (app/layout.tsx:54:26)
+  52 |   return (
+  53 |     <html lang="es" className="dark">
+> 54 |       <body className={`${helixaRegular.variable} ${helixaBold.variable} ${helixaLight.variable} ${helixaBook.variable} ${helixaBlack.variable} ${helixaThin.variable} antialiased dark bg-black`}>
+     |                          ^
+  55 |         {children}
+  56 |         <Toaster />
+  57 |       </body> {
+  digest: '3913659862'
+}
+ GET /dashboard/vehicles 500 in 364ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 241ms
+ GET /favicon.ico 200 in 240ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 118ms
+ ⨯ ReferenceError: geistSans is not defined
+    at RootLayout (app/layout.tsx:54:26)
+  52 |   return (
+  53 |     <html lang="es" className="dark">
+> 54 |       <body className={`${helixaRegular.variable} ${helixaBold.variable} ${helixaLight.variable} ${helixaBook.variable} ${helixaBlack.variable} ${helixaThin.variable} antialiased dark bg-black`}>
+     |                          ^
+  55 |         {children}
+  56 |         <Toaster />
+  57 |       </body> {
+  digest: '3913659862'
+}
+ GET /dashboard/vehicles 500 in 98ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 241ms
+ GET /favicon.ico 200 in 243ms
+ GET /dashboard/platforms 200 in 355ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 232ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 245ms
+ GET /api/vehicles?limit=1 200 in 768ms
+ GET /api/drivers?limit=1 200 in 1388ms
+ GET /dashboard/vehicles 200 in 69ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 132ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 121ms
+ ✓ Compiled in 195ms
+ GET /dashboard/drivers 200 in 90ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 132ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 123ms
+ ✓ Compiled in 199ms
+ ✓ Compiled in 115ms
+ ✓ Compiled in 86ms
+ ✓ Compiled in 96ms
+ ✓ Compiled in 116ms
+ GET /dashboard/finance 200 in 82ms
+ GET /dashboard/fraud-alerts 200 in 69ms
+ GET /dashboard/reports 200 in 64ms
+ ✓ Compiled in 107ms
+ GET /dashboard 200 in 80ms
+ GET /dashboard/platforms 200 in 128ms
+ GET /api/vehicles?limit=1 200 in 204ms
+ GET /api/drivers?limit=1 200 in 211ms
+ GET /api/vehicles?limit=1 200 in 144ms
+ GET /api/drivers?limit=1 200 in 142ms
+ ✓ Compiled in 178ms
+ GET /dashboard/vehicles 200 in 150ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 130ms
+ GET /api/vehicles?page=1&limit=10&state=&search=&sync=false 200 in 122ms
+ GET /dashboard/drivers 200 in 116ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 122ms
+ GET /api/drivers?page=1&limit=10&state=&search=&sync=false 200 in 121ms
+ GET /dashboard/finance 200 in 64ms
+ ✓ Compiled in 100ms
+ ✓ Compiled in 155ms
+ GET /dashboard/fraud-alerts 200 in 82ms
+ GET /dashboard/reports 200 in 54ms
+ GET /dashboard/fraud-alerts 200 in 68ms
+ GET /dashboard 200 in 80ms
+ GET /dashboard/platforms 200 in 248ms
+ GET /api/drivers?limit=1 200 in 142ms
+ GET /api/vehicles?limit=1 200 in 145ms
+ GET /api/vehicles?limit=1 200 in 139ms
+ GET /api/drivers?limit=1 200 in 140ms

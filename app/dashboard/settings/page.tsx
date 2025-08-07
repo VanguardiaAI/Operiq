@@ -102,10 +102,10 @@ export default function SettingsPage() {
   const [fraudThreshold, setFraudThreshold] = useState('medium');
 
   return (
-    <div className="grid gap-4 sm:gap-6 grid-cols-1 lg:grid-cols-4 px-2 sm:px-0">
+    <div className="grid gap-4 sm:gap-6 grid-cols-1 lg:grid-cols-4 px-4 sm:px-6 lg:px-8">
       {/* Sidebar */}
       <div className="lg:col-span-1 order-2 lg:order-1">
-        <Card className="bg-black border border-zinc-900/50">
+        <Card className="bg-black border border-zinc-900/50 shadow-xl hover:shadow-2xl transition-shadow duration-200">
           <CardHeader>
             <CardTitle className="text-white text-base sm:text-lg">Configuración</CardTitle>
           </CardHeader>
@@ -123,7 +123,7 @@ export default function SettingsPage() {
                         : 'text-zinc-500 hover:bg-zinc-900/30 hover:text-white'
                     }`}
                   >
-                    <Icon className={`h-3 w-3 sm:h-4 sm:w-4 ${section.color}`} />
+                    <Icon className={`h-3 w-3 sm:h-4 sm:w-4 text-yellow-500`} />
                     <div className="text-left">
                       <p className="font-medium">{section.title}</p>
                       <p className="text-xs text-zinc-600 hidden sm:block">{section.description}</p>
@@ -141,7 +141,7 @@ export default function SettingsPage() {
         {/* Profile Section */}
         {activeSection === 'profile' && (
           <>
-            <Card className="bg-black border border-zinc-900/50">
+            <Card className="bg-black border border-zinc-900/50 shadow-xl hover:shadow-2xl transition-shadow duration-200">
               <CardHeader className="p-4 sm:p-6">
                 <CardTitle className="text-white text-base sm:text-lg">Información de la Empresa</CardTitle>
                 <p className="text-xs text-zinc-500">Datos básicos de la organización</p>
@@ -149,48 +149,48 @@ export default function SettingsPage() {
               <CardContent className="space-y-4 p-4 sm:p-6">
                 <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
                   <div className="space-y-2">
-                    <Label htmlFor="company" className="text-zinc-400">Nombre de la empresa</Label>
+                    <Label htmlFor="company" className="text-zinc-500">Nombre de la empresa</Label>
                     <Input
                       id="company"
                       value={companyName}
                       onChange={(e) => setCompanyName(e.target.value)}
-                      className="bg-black border-zinc-800 text-white"
+                      className="bg-black border-zinc-900/50 text-white"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="text-zinc-400">Email corporativo</Label>
+                    <Label htmlFor="email" className="text-zinc-500">Email corporativo</Label>
                     <Input
                       id="email"
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="bg-black border-zinc-800 text-white"
+                      className="bg-black border-zinc-900/50 text-white"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="phone" className="text-zinc-400">Teléfono</Label>
+                    <Label htmlFor="phone" className="text-zinc-500">Teléfono</Label>
                     <Input
                       id="phone"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      className="bg-black border-zinc-800 text-white"
+                      className="bg-black border-zinc-900/50 text-white"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="address" className="text-zinc-400">Dirección</Label>
+                    <Label htmlFor="address" className="text-zinc-500">Dirección</Label>
                     <Input
                       id="address"
                       value={address}
                       onChange={(e) => setAddress(e.target.value)}
-                      className="bg-black border-zinc-800 text-white"
+                      className="bg-black border-zinc-900/50 text-white"
                     />
                   </div>
                 </div>
                 <div className="flex justify-end gap-2 pt-4">
-                  <Button variant="outline" className="bg-transparent border-zinc-800 text-zinc-400 hover:bg-zinc-900/50 hover:text-white">
+                  <Button variant="outline" className="bg-[#232c43] border-0 text-white hover:bg-[#232c43]/80">
                     Cancelar
                   </Button>
-                  <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                  <Button className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold">
                     <Save className="h-4 w-4 mr-2" />
                     Guardar cambios
                   </Button>
@@ -203,7 +203,7 @@ export default function SettingsPage() {
         {/* Integrations Section */}
         {activeSection === 'platforms' && (
           <>
-            <Card className="bg-black border border-zinc-900/50">
+            <Card className="bg-black border border-zinc-900/50 shadow-xl hover:shadow-2xl transition-shadow duration-200">
               <CardHeader className="p-4 sm:p-6">
                 <CardTitle className="text-white text-base sm:text-lg">Plataformas Conectadas</CardTitle>
                 <p className="text-xs text-zinc-500">Gestiona las integraciones con servicios externos</p>
@@ -213,7 +213,7 @@ export default function SettingsPage() {
                   <div key={platform.name} className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-3 sm:p-4 border border-zinc-900/50 gap-3">
                     <div className="flex items-center gap-3 sm:gap-4">
                       <div className="bg-zinc-900/50 p-2 sm:p-3">
-                        <Globe className="h-5 w-5 sm:h-6 sm:w-6 text-zinc-400" />
+                        <Globe className="h-5 w-5 sm:h-6 sm:w-6 text-yellow-500" />
                       </div>
                       <div>
                         <p className="font-medium text-white">{platform.name}</p>
@@ -242,14 +242,14 @@ export default function SettingsPage() {
                       <Button 
                         size="sm" 
                         variant="outline"
-                        className="bg-transparent border-zinc-800 text-zinc-400 hover:bg-zinc-900/50 hover:text-white"
+                        className="bg-[#232c43] border-0 text-white hover:bg-[#232c43]/80"
                       >
                         {platform.status === 'connected' ? 'Configurar' : 'Conectar'}
                       </Button>
                     </div>
                   </div>
                 ))}
-                <Button className="w-full bg-transparent border border-dashed border-zinc-800 text-zinc-400 hover:bg-zinc-900/50 hover:text-white">
+                <Button className="w-full bg-[#232c43] border border-dashed border-zinc-800 text-white hover:bg-[#232c43]/80">
                   <Plus className="h-4 w-4 mr-2" />
                   Añadir nueva integración
                 </Button>
@@ -261,7 +261,7 @@ export default function SettingsPage() {
         {/* Notifications Section */}
         {activeSection === 'notifications' && (
           <>
-            <Card className="bg-black border border-zinc-900/50">
+            <Card className="bg-black border border-zinc-900/50 shadow-xl hover:shadow-2xl transition-shadow duration-200">
               <CardHeader className="p-4 sm:p-6">
                 <CardTitle className="text-white text-base sm:text-lg">Preferencias de Notificación</CardTitle>
                 <p className="text-xs text-zinc-500">Configura cómo recibir alertas</p>
@@ -270,7 +270,7 @@ export default function SettingsPage() {
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2 sm:gap-3">
-                      <Mail className="h-5 w-5 text-zinc-400" />
+                      <Mail className="h-5 w-5 text-yellow-500" />
                       <div>
                         <p className="text-sm font-medium text-white">Notificaciones por Email</p>
                         <p className="text-xs text-zinc-500">Recibe alertas en tu correo</p>
@@ -278,12 +278,12 @@ export default function SettingsPage() {
                     </div>
                     <button
                       onClick={() => setNotificationEmail(!notificationEmail)}
-                      className={`relative inline-flex h-6 w-11 items-center rounded-full ${
+                      className={`relative inline-flex h-6 w-11 items-center ${
                         notificationEmail ? 'bg-blue-600' : 'bg-zinc-700'
                       }`}
                     >
                       <span
-                        className={`inline-block h-4 w-4 transform rounded-full bg-white transition ${
+                        className={`inline-block h-4 w-4 transform bg-white transition ${
                           notificationEmail ? 'translate-x-6' : 'translate-x-1'
                         }`}
                       />
@@ -291,7 +291,7 @@ export default function SettingsPage() {
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2 sm:gap-3">
-                      <Bell className="h-5 w-5 text-zinc-400" />
+                      <Bell className="h-5 w-5 text-yellow-500" />
                       <div>
                         <p className="text-sm font-medium text-white">Notificaciones Push</p>
                         <p className="text-xs text-zinc-500">Alertas en tiempo real</p>
@@ -299,12 +299,12 @@ export default function SettingsPage() {
                     </div>
                     <button
                       onClick={() => setNotificationPush(!notificationPush)}
-                      className={`relative inline-flex h-6 w-11 items-center rounded-full ${
+                      className={`relative inline-flex h-6 w-11 items-center ${
                         notificationPush ? 'bg-blue-600' : 'bg-zinc-700'
                       }`}
                     >
                       <span
-                        className={`inline-block h-4 w-4 transform rounded-full bg-white transition ${
+                        className={`inline-block h-4 w-4 transform bg-white transition ${
                           notificationPush ? 'translate-x-6' : 'translate-x-1'
                         }`}
                       />
@@ -312,7 +312,7 @@ export default function SettingsPage() {
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2 sm:gap-3">
-                      <Phone className="h-5 w-5 text-zinc-400" />
+                      <Phone className="h-5 w-5 text-yellow-500" />
                       <div>
                         <p className="text-sm font-medium text-white">SMS</p>
                         <p className="text-xs text-zinc-500">Alertas críticas por SMS</p>
@@ -320,12 +320,12 @@ export default function SettingsPage() {
                     </div>
                     <button
                       onClick={() => setNotificationSMS(!notificationSMS)}
-                      className={`relative inline-flex h-6 w-11 items-center rounded-full ${
+                      className={`relative inline-flex h-6 w-11 items-center ${
                         notificationSMS ? 'bg-blue-600' : 'bg-zinc-700'
                       }`}
                     >
                       <span
-                        className={`inline-block h-4 w-4 transform rounded-full bg-white transition ${
+                        className={`inline-block h-4 w-4 transform bg-white transition ${
                           notificationSMS ? 'translate-x-6' : 'translate-x-1'
                         }`}
                       />
@@ -333,11 +333,11 @@ export default function SettingsPage() {
                   </div>
                 </div>
                 <div className="space-y-2 pt-4 border-t border-zinc-900/50">
-                  <Label className="text-zinc-400">Umbral de detección de fraudes</Label>
+                  <Label className="text-zinc-500">Umbral de detección de fraudes</Label>
                   <select
                     value={fraudThreshold}
                     onChange={(e) => setFraudThreshold(e.target.value)}
-                    className="w-full px-3 py-2 bg-black border border-zinc-800 text-white"
+                    className="w-full px-3 py-2 bg-black border border-zinc-900/50 text-white"
                   >
                     <option value="low">Bajo - Más alertas</option>
                     <option value="medium">Medio - Balanceado</option>
@@ -352,13 +352,13 @@ export default function SettingsPage() {
         {/* API Section */}
         {activeSection === 'api' && (
           <>
-            <Card className="bg-black border border-zinc-900/50">
+            <Card className="bg-black border border-zinc-900/50 shadow-xl hover:shadow-2xl transition-shadow duration-200">
               <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-4 sm:p-6">
                 <div>
                   <CardTitle className="text-white text-base sm:text-lg">API Keys</CardTitle>
                   <p className="text-xs text-zinc-500">Gestiona las claves de acceso a la API</p>
                 </div>
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                <Button className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold">
                   <Plus className="h-4 w-4 mr-2" />
                   Nueva clave
                 </Button>
@@ -390,21 +390,21 @@ export default function SettingsPage() {
                 ))}
               </CardContent>
             </Card>
-            <Card className="bg-black border border-zinc-900/50">
+            <Card className="bg-black border border-zinc-900/50 shadow-xl hover:shadow-2xl transition-shadow duration-200">
               <CardHeader className="p-4 sm:p-6">
                 <CardTitle className="text-white text-base sm:text-lg">Webhooks</CardTitle>
                 <p className="text-xs text-zinc-500">Endpoints para recibir eventos</p>
               </CardHeader>
               <CardContent className="p-4 sm:p-6">
                 <div className="space-y-2">
-                  <Label htmlFor="webhook" className="text-zinc-400">URL del Webhook</Label>
+                  <Label htmlFor="webhook" className="text-zinc-500">URL del Webhook</Label>
                   <div className="flex gap-2">
                     <Input
                       id="webhook"
                       placeholder="https://tu-dominio.com/webhook"
-                      className="bg-black border-zinc-800 text-white"
+                      className="bg-black border-zinc-900/50 text-white"
                     />
-                    <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                    <Button className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold">
                       Configurar
                     </Button>
                   </div>

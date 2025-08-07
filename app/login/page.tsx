@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
-import { Car } from 'lucide-react';
+import Image from 'next/image';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -46,9 +46,15 @@ export default function LoginPage() {
     <div className="min-h-screen bg-black flex items-center justify-center p-4">
       <Card className="w-full max-w-md bg-zinc-950 border-zinc-800">
         <CardHeader className="space-y-1">
-          <div className="flex items-center justify-center mb-4">
-            <div className="h-12 w-12 bg-blue-500 rounded-lg flex items-center justify-center">
-              <Car className="h-8 w-8 text-white" />
+          <div className="flex flex-col items-center justify-center mb-4 space-y-4">
+            <div className="relative w-32 h-32">
+              <Image
+                src="/logo_operiq.webp"
+                alt="OPERIQ Logo"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
           </div>
           <CardTitle className="text-2xl text-center text-white">OPERIQ</CardTitle>

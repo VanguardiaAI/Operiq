@@ -71,7 +71,7 @@ export default function Header() {
         {/* Hamburger Menu Button - Only visible on mobile */}
         <button
           type="button"
-          className="md:hidden h-10 w-10 flex items-center justify-center rounded-md hover:bg-zinc-900 transition-colors"
+          className="md:hidden h-10 w-10 flex items-center justify-center hover:bg-zinc-900 transition-colors"
           onClick={handleMenuToggle}
           aria-label="Toggle menu"
         >
@@ -91,10 +91,6 @@ export default function Header() {
       
       {/* Right side actions */}
       <div className="flex items-center gap-2 md:gap-4">
-        <span className="text-yellow-500 text-[10px] md:text-xs font-medium bg-yellow-500/10 px-1.5 md:px-2 py-0.5 md:py-1 hidden sm:block">
-          DEMO
-        </span>
-        
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon" className="rounded-full h-8 w-8 p-0">

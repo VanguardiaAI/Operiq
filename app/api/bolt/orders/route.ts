@@ -1,0 +1,110 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { BoltService } from '@/services/bolt/boltService';
+
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json();
+    const { company_id, start_date, end_date, limit = 100, offset = 0 } = body;
+
+    if (!company_id) {
+      return NextResponse.json(
+        { error: 'company_id is required' },
+        { status: 400 }
+      );
+    }
+
+    if (!start_date || !end_date) {
+      return NextResponse.json(
+        { error: 'start_date and end_date are required' },
+        { status: 400 }
+      );
+    }
+
+    const boltService = BoltService.getInstance();
+
+    if (!boltService.isConfigured()) {
+      return NextResponse.json(
+        { error: 'Bolt API is not configured. Please set BOLT_CLIENT_ID and BOLT_CLIENT_SECRET environment variables.' },
+        { status: 503 }
+      );
+    }
+
+    const startDateObj = new Date(start_date);
+    const endDateObj = new Date(end_date);
+
+    const result = await boltService.getOrders(
+      company_id,
+      startDateObj,
+      endDateObj,
+      limit,
+      offset
+    );
+
+    return NextResponse.json({
+      success: true,
+      data: result,
+    });
+  } catch (error: any) {
+    console.error('Bolt orders endpoint error:', error);
+    return NextResponse.json(
+      { error: error.message || 'Internal server error' },
+      { status: 500 }
+    );
+  }
+}
+
+export async function GET(request: NextRequest) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const company_id = searchParams.get('company_id');
+    const start_date = searchParams.get('start_date');
+    const end_date = searchParams.get('end_date');
+    const limit = parseInt(searchParams.get('limit') || '100');
+    const offset = parseInt(searchParams.get('offset') || '0');
+
+    if (!company_id) {
+      return NextResponse.json(
+        { error: 'company_id is required' },
+        { status: 400 }
+      );
+    }
+
+    if (!start_date || !end_date) {
+      return NextResponse.json(
+        { error: 'start_date and end_date are required' },
+        { status: 400 }
+      );
+    }
+
+    const boltService = BoltService.getInstance();
+
+    if (!boltService.isConfigured()) {
+      return NextResponse.json(
+        { error: 'Bolt API is not configured. Please set BOLT_CLIENT_ID and BOLT_CLIENT_SECRET environment variables.' },
+        { status: 503 }
+      );
+    }
+
+    const startDateObj = new Date(start_date);
+    const endDateObj = new Date(end_date);
+
+    const result = await boltService.getOrders(
+      parseInt(company_id),
+      startDateObj,
+      endDateObj,
+      limit,
+      offset
+    );
+
+    return NextResponse.json({
+      success: true,
+      data: result,
+    });
+  } catch (error: any) {
+    console.error('Bolt orders endpoint error:', error);
+    return NextResponse.json(
+      { error: error.message || 'Internal server error' },
+      { status: 500 }
+    );
+  }
+}

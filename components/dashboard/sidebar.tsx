@@ -18,6 +18,7 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { useMobileMenu } from '@/contexts/mobile-menu-context';
 import { useEffect } from 'react';
+import Image from 'next/image';
 
 const menuItems = [
   {
@@ -86,15 +87,21 @@ export default function Sidebar() {
   const sidebarContent = (
     <>
       <div className="flex items-center justify-between gap-2 p-4 md:p-6 border-b border-zinc-900/50">
-        <div className="flex items-center gap-2">
-          <div className="bg-white p-1.5 md:p-2">
-            <Car className="h-5 w-5 md:h-6 md:w-6 text-black" />
+        <div className="flex items-center gap-3">
+          <div className="relative w-8 h-8 md:w-10 md:h-10">
+            <Image
+              src="/logo_operiq.webp"
+              alt="OPERIQ Logo"
+              fill
+              className="object-contain"
+              priority
+            />
           </div>
-          <span className="text-lg md:text-xl font-bold">OPERIQ</span>
+          <span className="text-lg md:text-xl font-bold bg-gradient-to-r from-zinc-300 to-white bg-clip-text text-transparent">OPERIQ</span>
         </div>
         <button
           type="button"
-          className="md:hidden h-8 w-8 flex items-center justify-center rounded-md hover:bg-zinc-900"
+          className="md:hidden h-8 w-8 flex items-center justify-center hover:bg-zinc-900"
           onClick={close}
         >
           <X className="h-5 w-5" />
@@ -118,7 +125,7 @@ export default function Sidebar() {
                     }
                   }}
                   className={cn(
-                    'flex items-center gap-3 px-3 py-2.5 md:py-2 transition-colors rounded-md',
+                    'flex items-center gap-3 px-3 py-2.5 md:py-2 transition-colors',
                     isActive
                       ? 'bg-zinc-900/50 text-white border-l-2 border-blue-500'
                       : 'text-zinc-500 hover:bg-zinc-900/30 hover:text-white'
